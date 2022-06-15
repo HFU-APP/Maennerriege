@@ -13,7 +13,6 @@ namespace Wettkampf
         {
             InitializeComponent();
 
-            DependencyService.Register<ItemMockDataStore>();
             DependencyService.Register<AlbumMockDataStore>();
 
             MainPage = new MainPage();
