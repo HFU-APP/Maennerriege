@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using Wettkampf.Models;
-using Wettkampf.Services;
-using Xamarin.Forms;
 
 namespace Wettkampf.ViewModels
 {
@@ -23,8 +20,6 @@ namespace Wettkampf.ViewModels
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-
-        protected IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
 
         protected bool SetProperty<T>(
             ref T backingStore,

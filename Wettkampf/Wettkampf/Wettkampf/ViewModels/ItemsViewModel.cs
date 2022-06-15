@@ -8,14 +8,10 @@ using Xamarin.Forms;
 
 namespace Wettkampf.ViewModels
 {
-    public class ItemsViewModel : ViewModelBase
+    public class ItemsViewModel : ItemViewModelBase<Item>
     {
-        private Item _selectedItem;
-
-        public ObservableCollection<Item> Items { get; }
-        public Command LoadItemsCommand { get; }
-        public Command AddItemCommand { get; }
-        public Command<Item> ItemTapped { get; }
+        public ObservableCollection<Item> Items { get; set; }
+        public Command LoadItemsCommand { get; set; }
 
         public ItemsViewModel()
         {
@@ -23,9 +19,12 @@ namespace Wettkampf.ViewModels
             Items = new ObservableCollection<Item>();
             LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
-            ItemTapped = new Command<Item>(OnItemSelected);
-
-            AddItemCommand = new Command(OnAddItem);
+            MessagingCenter.Subscribe<NewItemPage, Item>(this, "AddItem", async (obj, item) =>
+            {
+                var newItem = item as Item;
+                Items.Add(newItem);
+                await DataStore.AddItemAsync(newItem);
+            });
         }
 
         async Task ExecuteLoadItemsCommand()
@@ -49,36 +48,6 @@ namespace Wettkampf.ViewModels
             {
                 IsBusy = false;
             }
-        }
-
-        public void OnAppearing()
-        {
-            IsBusy = true;
-            SelectedItem = null;
-        }
-
-        public Item SelectedItem
-        {
-            get => _selectedItem;
-            set
-            {
-                SetProperty(ref _selectedItem, value);
-                OnItemSelected(value);
-            }
-        }
-
-        private async void OnAddItem(object obj)
-        {
-            await Shell.Current.GoToAsync(nameof(NewItemPage));
-        }
-
-        async void OnItemSelected(Item item)
-        {
-            if (item == null)
-                return;
-
-            // This will push the ItemDetailPage onto the navigation stack
-            await Shell.Current.GoToAsync($"{nameof(ItemDetailPage)}?{nameof(ItemDetailViewModel.ItemId)}={item.Id}");
         }
     }
 }
