@@ -7,7 +7,7 @@ using Xamarin.Forms;
 namespace Wettkampf.ViewModels
 {
     [QueryProperty(nameof(ItemId), nameof(ItemId))]
-    public class ItemDetailViewModel : BaseViewModel
+    public class ItemDetailViewModel : ViewModelBase
     {
         private string itemId;
         private string text;

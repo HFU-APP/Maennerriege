@@ -8,7 +8,7 @@ using Xamarin.Forms;
 
 namespace Wettkampf.ViewModels
 {
-    public class BaseViewModel : INotifyPropertyChanged
+    public class ViewModelBase : INotifyPropertyChanged
     {
         public bool IsBusy
         {

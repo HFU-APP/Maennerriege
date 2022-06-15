@@ -7,7 +7,7 @@ using Xamarin.Forms;
 
 namespace Wettkampf.ViewModels
 {
-    public class NewItemViewModel : BaseViewModel
+    public class NewItemViewModel : ViewModelBase
     {
         private string text;
         private string description;

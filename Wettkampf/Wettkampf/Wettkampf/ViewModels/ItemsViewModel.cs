@@ -8,7 +8,7 @@ using Xamarin.Forms;
 
 namespace Wettkampf.ViewModels
 {
-    public class ItemsViewModel : BaseViewModel
+    public class ItemsViewModel : ViewModelBase
     {
         private Item _selectedItem;
 
