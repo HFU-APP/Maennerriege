@@ -15,7 +15,7 @@ namespace Wettkampf.ViewModels
 
     public ListViewModelBase()
     {
-      Title = "Browse";
+      Title = "Liste der Vereine";
       Items = new ObservableCollection<TItem>();
       LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 

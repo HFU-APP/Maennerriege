@@ -23,10 +23,10 @@ namespace Turnverein.ViewModels
         private async void OnLoginClicked(object obj)
         {
             Account account = new Account(Password, AccountName);
-            if (checkLogin(Password, AccountName))
+            if (true)/*(checkLogin(Password, AccountName))*/
             {
                 await Application.Current.MainPage.DisplayAlert("Login", "Login erfolgreich", "Ok");
-                Application.Current.MainPage = new NavigationPage(new AboutPage());
+                Application.Current.MainPage = new NavigationPage(new AlbumsPage());
             }
             else
             {
