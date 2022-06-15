@@ -1,4 +1,6 @@
 ﻿using System;
+using Turnverein;
+using Turnverein.Views;
 using Wettkampf.Services;
 using Wettkampf.Views;
 using Xamarin.Forms;
@@ -15,7 +17,7 @@ namespace Wettkampf
 
             DependencyService.Register<AlbumMockDataStore>();
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new LoginPage());
         }
 
         protected override void OnStart()
