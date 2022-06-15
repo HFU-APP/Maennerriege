@@ -1,4 +1,4 @@
-﻿// <copyright file="NewItemPage.xaml.cs" company="Marco von Ballmoos">
+﻿// <copyright file="NewAlbumPage.xaml.cs" company="Marco von Ballmoos">
 //   Copyright (c) 2021 Marco von Ballmoos. All rights reserved.
 // </copyright>
 
@@ -8,18 +8,18 @@ using Xamarin.Forms;
 
 namespace Wettkampf.Views
 {
-  public partial class NewItemPage : ContentPage
+  public partial class NewAlbumPage : ContentPage
   {
-    public Item Item { get; set; }
+    public Album Album { get; set; }
 
-    public NewItemPage()
+    public NewAlbumPage()
     {
       InitializeComponent();
 
-      Item = new Item
+      Album = new Album
       {
-        Text = "Item name",
-        Description = "This is an item description."
+        Title = "Album name",
+        Description = "This album contains vacation photos."
       };
 
       BindingContext = this;
@@ -27,7 +27,7 @@ namespace Wettkampf.Views
 
     private async void Save_Clicked(object sender, EventArgs e)
     {
-      MessagingCenter.Send(this, "AddItem", Item);
+      MessagingCenter.Send(this, "AddItem", Album);
       await Navigation.PopModalAsync();
     }
 

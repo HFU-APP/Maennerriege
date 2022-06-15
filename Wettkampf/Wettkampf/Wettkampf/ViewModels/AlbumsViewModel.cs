@@ -3,7 +3,7 @@ using Wettkampf.Views;
 
 namespace Wettkampf.ViewModels
 {
-  public class ItemsViewModel : ListViewModelBase<Item, NewItemPage>
+  public class AlbumsViewModel : ListViewModelBase<Album, NewAlbumPage>
   {
   }
 }

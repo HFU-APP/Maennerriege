@@ -1,32 +1,45 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="ItemsPage.xaml.cs" company="Marco von Ballmoos">
+//   Copyright (c) 2021 Marco von Ballmoos. All rights reserved.
+// </copyright>
+
+using System;
 using Wettkampf.Models;
 using Wettkampf.ViewModels;
-using Wettkampf.Views;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace Wettkampf.Views
 {
-    public partial class ItemsPage : ContentPage
+  public partial class ItemsPage : ContentPage
+  {
+    private readonly ItemsViewModel _viewModel;
+
+    public ItemsPage()
     {
-        ItemsViewModel _viewModel;
+      InitializeComponent();
 
-        public ItemsPage()
-        {
-            InitializeComponent();
-
-            BindingContext = _viewModel = new ItemsViewModel();
-        }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-            _viewModel.OnAppearing();
-        }
+      BindingContext = _viewModel = new ItemsViewModel();
     }
+
+    private async void OnItemSelected(object sender, EventArgs args)
+    {
+      var layout = (BindableObject)sender;
+      var item = (Item)layout.BindingContext;
+      await Navigation.PushAsync(new ItemDetailPage(new ItemDetailViewModel(item)));
+    }
+
+    private async void AddItem_Clicked(object sender, EventArgs e)
+    {
+      await Navigation.PushModalAsync(new NavigationPage(new NewItemPage()));
+    }
+
+    protected override void OnAppearing()
+    {
+      base.OnAppearing();
+
+      if (_viewModel.Items.Count == 0)
+      {
+        _viewModel.IsBusy = true;
+      }
+    }
+  }
 }

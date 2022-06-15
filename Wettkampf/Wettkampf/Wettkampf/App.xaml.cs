@@ -13,8 +13,10 @@ namespace Wettkampf
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
-            MainPage = new AppShell();
+            DependencyService.Register<ItemMockDataStore>();
+            DependencyService.Register<AlbumMockDataStore>();
+
+            MainPage = new MainPage();
         }
 
         protected override void OnStart()

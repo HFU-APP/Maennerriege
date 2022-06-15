@@ -1,8 +1,4 @@
-﻿// <copyright file="ItemViewModelBase.cs" company="Marco von Ballmoos">
-//   Copyright (c) 2021 Marco von Ballmoos. All rights reserved.
-// </copyright>
-
-using Wettkampf.Services;
+﻿using Wettkampf.Services;
 using Xamarin.Forms;
 
 namespace Wettkampf.ViewModels

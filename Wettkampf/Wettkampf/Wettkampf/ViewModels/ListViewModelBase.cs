@@ -1,8 +1,4 @@
-﻿// <copyright file="ListViewModelBase.cs" company="Marco von Ballmoos">
-//   Copyright (c) 2021 Marco von Ballmoos. All rights reserved.
-// </copyright>
-
-using System;
+﻿using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
@@ -10,9 +6,8 @@ using Xamarin.Forms;
 
 namespace Wettkampf.ViewModels
 {
-  public class ListViewModelBase : ViewModelBase<TItem, TPage> : ItemViewModelBase<TItem>
-      where TItem : class
-      where TPage : class
+  public class ListViewModelBase<TItem, TPage> : ItemViewModelBase<TItem>
+    where TPage : class
   {
     public ObservableCollection<TItem> Items { get; set; }
 
@@ -26,9 +21,8 @@ namespace Wettkampf.ViewModels
 
       MessagingCenter.Subscribe<TPage, TItem>(this, "AddItem", async (obj, item) =>
       {
-        var newItem = item as TItem;
-        Items.Add(newItem);
-        await DataStore.AddItemAsync(newItem);
+        Items.Add(item);
+        await DataStore.AddItemAsync(item);
       });
     }
 
