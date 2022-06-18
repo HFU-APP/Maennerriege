@@ -3,6 +3,7 @@
 // </copyright>
 
 using System;
+using System.Net.Http;
 using Wettkampf.Models;
 using Wettkampf.Services;
 using JetBrains.Annotations;
@@ -28,11 +29,14 @@ namespace Wettkampf.Core
     {
       if (container is null) { throw new ArgumentNullException(nameof(container)); }
 
-      container.RegisterSingleton<IDataStore<Verein>, SQLiteDataStore<Verein>>();
+      container.RegisterSingleton<IDataStore<Verein>, VereineDataStore>();
       container.RegisterSingleton<IDialogService, DialogService>();
       container.RegisterSingleton<IVereinSaver, VereinSaver>();
+      container.RegisterSingleton<IWebService<Verein>, VereineWebService>();
+      container.Register(() => new HttpClient());
 
-      return container;
+
+            return container;
     }
   }
 }

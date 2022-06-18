@@ -32,7 +32,7 @@ namespace Wettkampf
 
             MainPage = navigationPage;
         }
-        public static Container Services { get; } = ContainerExtensions.CreateContainer();
+        public static Container Services { get; private set; } = ContainerExtensions.CreateContainer();
 
 
 
