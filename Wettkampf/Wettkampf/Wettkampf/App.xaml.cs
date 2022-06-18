@@ -27,6 +27,9 @@ namespace Wettkampf
             Services.RegisterInstance<Page>(navigationPage);
             //Services.RegisterSingleton<IDialogService, DialogService>();
 
+            var datastore = Services.GetInstance<IDataStore<Verein>>();
+            datastore.Initialize();
+
             MainPage = navigationPage;
         }
         public static Container Services { get; } = ContainerExtensions.CreateContainer();
