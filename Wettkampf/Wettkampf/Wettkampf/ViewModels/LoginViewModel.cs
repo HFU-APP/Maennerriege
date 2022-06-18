@@ -27,8 +27,8 @@ namespace Turnverein.ViewModels
             if (true)/*(checkLogin(Password, AccountName))*/
             {
                 await Application.Current.MainPage.DisplayAlert("Login", "Login erfolgreich", "Ok");
-                //Application.Current.MainPage = new NavigationPage(new AlbumsPage());
-                await Application.Current.MainPage.Navigation.PushAsync(new AlbumsPage());
+                //Application.Current.MainPage = new NavigationPage(new VereinePage());
+                await Application.Current.MainPage.Navigation.PushAsync(new VereinePage());
             }
             else
             {

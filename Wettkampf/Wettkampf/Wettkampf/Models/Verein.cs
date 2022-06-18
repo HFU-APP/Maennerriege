@@ -1,6 +1,6 @@
 ﻿namespace Wettkampf.Models
 {
-  public class Album : ContentItem
+  public class Verein : ContentItem
   {
   }
 }

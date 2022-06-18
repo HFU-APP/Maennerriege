@@ -11,16 +11,28 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\NeuerVereinPage.xaml.cs">
+      <DependentUpon>NeuerVereinPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\VereinePage.xaml.cs">
+      <DependentUpon>VereinePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\VereinDetailPage.xaml.cs">
+      <DependentUpon>VereinDetailPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
     <EmbeddedResource Update="AppShell.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\AboutPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\AlbumDetailPage.xaml">
+    <EmbeddedResource Update="Views\VereinDetailPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\AlbumsPage.xaml">
+    <EmbeddedResource Update="Views\VereinePage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\LoginPage.xaml">
@@ -29,7 +41,7 @@
     <EmbeddedResource Update="Views\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewAlbumPage.xaml">
+    <EmbeddedResource Update="Views\NeuerVereinPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>
