@@ -11,39 +11,35 @@ namespace Wettkampf.Views
 {
   public partial class NeuerVereinPage : ContentPage
   {
-      private readonly IDialogService _dialogService;
-      public Verein Verein { get; set; }
+      private readonly IVereinSaver _vereinSaver;
+        public Verein Verein { get; set; }
 
     public NeuerVereinPage()
     {
       InitializeComponent();
 
-      _dialogService = App.Services.GetInstance<IDialogService>();
-      Verein = new Verein();
+      _vereinSaver = App.Services.GetInstance<IVereinSaver>();
+            Verein = new Verein();
 
       BindingContext = this;
     }
 
     private async void Save_Clicked(object sender, EventArgs e)
     {
-        if (string.IsNullOrEmpty(Verein.Title))
-        {
-            await _dialogService.Show("Validation failed", "The title cannot be empty.");
-        }
-        else if (string.IsNullOrEmpty(Verein.Description))
-        {
-            await _dialogService.Show("Validation failed", "The description cannot be empty.");
-        }
-        else
+        if (await _vereinSaver.TrySaveAsync(Verein))
         {
             MessagingCenter.Send(this, "AddItem", Verein);
             await Navigation.PopModalAsync();
         }
-    }
+        }
 
     private async void Cancel_Clicked(object sender, EventArgs e)
     {
-      await Navigation.PopModalAsync();
-    }
+        if (await _vereinSaver.TrySaveAsync(Verein))
+        {
+            MessagingCenter.Send(this, "AddItem", Verein);
+            await Navigation.PopModalAsync();
+        }
+        }
   }
 }
