@@ -1,6 +1,8 @@
 ﻿using System;
+using SimpleInjector;
 using Turnverein;
 using Turnverein.Views;
+using Wettkampf.Models;
 using Wettkampf.Services;
 using Wettkampf.Views;
 using Xamarin.Forms;
@@ -15,9 +17,31 @@ namespace Wettkampf
         {
             InitializeComponent();
 
-            DependencyService.Register<VereinMockDataStore>();
+            var loginPage = new LoginPage();
+            var navigationPage = new NavigationPage(loginPage);
 
-            MainPage = new NavigationPage(new LoginPage());
+            Services.RegisterSingleton<IDataStore<Verein>, VereinMockDataStore>();
+            Services.RegisterInstance<Page>(navigationPage);
+            Services.RegisterSingleton<IDialogService, DialogService>();
+
+            MainPage = navigationPage;
+        }
+
+        public static Container Services { get; } = CreateContainer();
+
+        private static Container CreateContainer()
+        {
+            return new Container()
+            {
+                Options =
+                {
+                    ResolveUnregisteredConcreteTypes = true
+                }
+            };
+
+            //DependencyService.Register<VereinMockDataStore>();
+
+            //MainPage = new NavigationPage(new LoginPage());
         }
 
         protected override void OnStart()

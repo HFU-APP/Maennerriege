@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using Turnverein.Views;
+using Wettkampf;
 using Wettkampf.Models;
+using Wettkampf.Services;
 using Wettkampf.ViewModels;
 using Wettkampf.Views;
 using Xamarin.Forms;
@@ -23,16 +25,18 @@ namespace Turnverein.ViewModels
 
         private async void OnLoginClicked(object obj)
         {
+            var dialogService = App.Services.GetInstance<IDialogService>();
             Account account = new Account(Password, AccountName);
             if (true)/*(checkLogin(Password, AccountName))*/
             {
-                await Application.Current.MainPage.DisplayAlert("Login", "Login erfolgreich", "Ok");
+                
+                await dialogService.Show("Login", "Login erfolgreich");
                 //Application.Current.MainPage = new NavigationPage(new VereinePage());
                 await Application.Current.MainPage.Navigation.PushAsync(new VereinePage());
             }
             else
             {
-                await Application.Current.MainPage.DisplayAlert("Login", "Login nicht korrekt, kein Benutzername oder kein Passwort", "Ok");
+                await dialogService.Show("Login", "Login nicht korrekt, kein Benutzername oder kein Passwort");
             }
 
             // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one

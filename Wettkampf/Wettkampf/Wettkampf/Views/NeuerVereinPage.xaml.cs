@@ -5,17 +5,20 @@
 using System;
 using Wettkampf.Models;
 using Xamarin.Forms;
+using Wettkampf.Services;
 
 namespace Wettkampf.Views
 {
   public partial class NeuerVereinPage : ContentPage
   {
-    public Verein Verein { get; set; }
+      private readonly IDialogService _dialogService;
+      public Verein Verein { get; set; }
 
     public NeuerVereinPage()
     {
       InitializeComponent();
 
+      _dialogService = App.Services.GetInstance<IDialogService>();
       Verein = new Verein();
 
       BindingContext = this;
@@ -25,11 +28,11 @@ namespace Wettkampf.Views
     {
         if (string.IsNullOrEmpty(Verein.Title))
         {
-            await DisplayAlert("Validation failed", "The title cannot be empty.", "OK");
+            await _dialogService.Show("Validation failed", "The title cannot be empty.");
         }
         else if (string.IsNullOrEmpty(Verein.Description))
         {
-            await DisplayAlert("Validation failed", "The description cannot be empty.", "OK");
+            await _dialogService.Show("Validation failed", "The description cannot be empty.");
         }
         else
         {
