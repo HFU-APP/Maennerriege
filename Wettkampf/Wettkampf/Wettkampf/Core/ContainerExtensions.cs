@@ -28,7 +28,7 @@ namespace Wettkampf.Core
     {
       if (container is null) { throw new ArgumentNullException(nameof(container)); }
 
-      container.RegisterSingleton<IDataStore<Verein>, VereinMockDataStore>();
+      container.RegisterSingleton<IDataStore<Verein>, SQLiteDataStore<Verein>>();
       container.RegisterSingleton<IDialogService, DialogService>();
       container.RegisterSingleton<IVereinSaver, VereinSaver>();
 
