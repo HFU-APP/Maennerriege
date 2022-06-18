@@ -24,7 +24,7 @@ namespace Wettkampf.Views
       BindingContext = this;
     }
 
-    private async void Save_Clicked(object sender, EventArgs e)
+    public async void Save_Clicked(object sender, EventArgs e)
     {
         if (string.IsNullOrEmpty(Verein.Title))
         {

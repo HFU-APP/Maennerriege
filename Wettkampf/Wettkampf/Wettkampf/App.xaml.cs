@@ -6,7 +6,9 @@ using Wettkampf.Models;
 using Wettkampf.Services;
 using Wettkampf.Views;
 using Xamarin.Forms;
+using SimpleInjector;
 using Xamarin.Forms.Xaml;
+using Wettkampf.Core;
 
 namespace Wettkampf
 {
@@ -20,29 +22,21 @@ namespace Wettkampf
             var loginPage = new LoginPage();
             var navigationPage = new NavigationPage(loginPage);
 
-            Services.RegisterSingleton<IDataStore<Verein>, VereinMockDataStore>();
+            //Services.RegisterSingleton<IDataStore<Verein>, VereinMockDataStore>();
+            Services.RegisterWettkampfServices();
             Services.RegisterInstance<Page>(navigationPage);
-            Services.RegisterSingleton<IDialogService, DialogService>();
+            //Services.RegisterSingleton<IDialogService, DialogService>();
 
             MainPage = navigationPage;
         }
+        public static Container Services { get; } = ContainerExtensions.CreateContainer();
 
-        public static Container Services { get; } = CreateContainer();
 
-        private static Container CreateContainer()
-        {
-            return new Container()
-            {
-                Options =
-                {
-                    ResolveUnregisteredConcreteTypes = true
-                }
-            };
 
-            //DependencyService.Register<VereinMockDataStore>();
+        //DependencyService.Register<VereinMockDataStore>();
 
-            //MainPage = new NavigationPage(new LoginPage());
-        }
+        //MainPage = new NavigationPage(new LoginPage());
+    
 
         protected override void OnStart()
         {
