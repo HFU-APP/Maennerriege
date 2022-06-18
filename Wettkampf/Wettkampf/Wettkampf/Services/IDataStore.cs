@@ -7,6 +7,7 @@ namespace Wettkampf.Services
 {
   public interface IDataStore<T>
   {
+      Task Initialize();
     Task<bool> AddItemAsync(T item);
 
     Task<bool> UpdateItemAsync(T item);
