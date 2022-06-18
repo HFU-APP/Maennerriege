@@ -18,7 +18,8 @@ namespace Wettkampf.Core
       {
         Options =
         {
-          ResolveUnregisteredConcreteTypes = true
+          ResolveUnregisteredConcreteTypes = true,
+          AllowOverridingRegistrations = true
         }
       };
     }
@@ -29,6 +30,7 @@ namespace Wettkampf.Core
 
       container.RegisterSingleton<IDataStore<Verein>, VereinMockDataStore>();
       container.RegisterSingleton<IDialogService, DialogService>();
+      container.RegisterSingleton<IVereinSaver, VereinSaver>();
 
       return container;
     }
