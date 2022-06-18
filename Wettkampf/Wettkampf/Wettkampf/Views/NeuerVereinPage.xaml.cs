@@ -1,4 +1,4 @@
-﻿// <copyright file="NewAlbumPage.xaml.cs" company="Marco von Ballmoos">
+﻿// <copyright file="NeuerVereinPage.xaml.cs" company="Marco von Ballmoos">
 //   Copyright (c) 2021 Marco von Ballmoos. All rights reserved.
 // </copyright>
 
@@ -8,32 +8,32 @@ using Xamarin.Forms;
 
 namespace Wettkampf.Views
 {
-  public partial class NewAlbumPage : ContentPage
+  public partial class NeuerVereinPage : ContentPage
   {
-    public Album Album { get; set; }
+    public Verein Verein { get; set; }
 
-    public NewAlbumPage()
+    public NeuerVereinPage()
     {
       InitializeComponent();
 
-      Album = new Album();
+      Verein = new Verein();
 
       BindingContext = this;
     }
 
     private async void Save_Clicked(object sender, EventArgs e)
     {
-        if (string.IsNullOrEmpty(Album.Title))
+        if (string.IsNullOrEmpty(Verein.Title))
         {
             await DisplayAlert("Validation failed", "The title cannot be empty.", "OK");
         }
-        else if (string.IsNullOrEmpty(Album.Description))
+        else if (string.IsNullOrEmpty(Verein.Description))
         {
             await DisplayAlert("Validation failed", "The description cannot be empty.", "OK");
         }
         else
         {
-            MessagingCenter.Send(this, "AddItem", Album);
+            MessagingCenter.Send(this, "AddItem", Verein);
             await Navigation.PopModalAsync();
         }
     }

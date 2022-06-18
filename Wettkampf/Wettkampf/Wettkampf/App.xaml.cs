@@ -15,7 +15,7 @@ namespace Wettkampf
         {
             InitializeComponent();
 
-            DependencyService.Register<AlbumMockDataStore>();
+            DependencyService.Register<VereinMockDataStore>();
 
             MainPage = new NavigationPage(new LoginPage());
         }

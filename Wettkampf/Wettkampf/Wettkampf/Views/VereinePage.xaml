@@ -3,9 +3,9 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:vm="clr-namespace:Wettkampf;assembly=Wettkampf"
-    x:Class="Wettkampf.Views.AlbumsPage"
+    x:Class="Wettkampf.Views.VereinePage"
     x:Name="BrowseAlbumsPage"
-    x:DataType="vm:ViewModels.AlbumsViewModel"
+    x:DataType="vm:ViewModels.VereineViewModel"
     Title="{Binding Title}">
 
   <ContentPage.ToolbarItems>
@@ -16,7 +16,7 @@
     <CollectionView x:Name="ItemsCollectionView"
                 ItemsSource="{Binding Items}">
       <CollectionView.ItemTemplate>
-        <DataTemplate x:DataType="vm:Models.Album">
+        <DataTemplate x:DataType="vm:Models.Verein">
           <StackLayout Padding="10">
             <Label Text="{Binding Title}" 
                                 LineBreakMode="NoWrap" 
