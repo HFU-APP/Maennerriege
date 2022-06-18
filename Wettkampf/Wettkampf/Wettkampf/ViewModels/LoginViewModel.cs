@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Turnverein.Views;
 using Wettkampf.Models;
 using Wettkampf.ViewModels;
 using Wettkampf.Views;
@@ -26,7 +27,8 @@ namespace Turnverein.ViewModels
             if (true)/*(checkLogin(Password, AccountName))*/
             {
                 await Application.Current.MainPage.DisplayAlert("Login", "Login erfolgreich", "Ok");
-                Application.Current.MainPage = new NavigationPage(new AlbumsPage());
+                //Application.Current.MainPage = new NavigationPage(new AlbumsPage());
+                await Application.Current.MainPage.Navigation.PushAsync(new AlbumsPage());
             }
             else
             {
