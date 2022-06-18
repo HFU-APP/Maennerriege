@@ -17,11 +17,13 @@ namespace Wettkampf.Services
   /// </summary>
   public class VereineWebService : IWebService<Verein>
   {
-    public VereineWebService(HttpClient client)
+    public VereineWebService(IHttpClientFactory clientFactory)
     {
-      _client = client ?? throw new ArgumentNullException(nameof(client));
+        if (clientFactory == null) { throw new ArgumentNullException(nameof(clientFactory)); }
 
-      // Set a base-address so we don't need to repeat ourselves.
+        _client = clientFactory.CreateClient();
+
+        // Set a base-address so we don't need to repeat ourselves.
       _client.BaseAddress = new Uri("http://localhost:3000");
 
       // Set global headers for all requests.

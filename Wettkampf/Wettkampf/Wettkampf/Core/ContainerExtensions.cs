@@ -33,7 +33,7 @@ namespace Wettkampf.Core
       container.RegisterSingleton<IDialogService, DialogService>();
       container.RegisterSingleton<IVereinSaver, VereinSaver>();
       container.RegisterSingleton<IWebService<Verein>, VereineWebService>();
-      container.Register(() => new HttpClient());
+      container.RegisterSingleton<IHttpClientFactory, HttpClientFactory>();
 
 
             return container;
