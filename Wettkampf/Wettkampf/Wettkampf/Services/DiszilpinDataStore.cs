@@ -5,11 +5,11 @@ using Wettkampf.Models;
 
 namespace Wettkampf.Services
 {
-  public class VereineDataStore : SQLiteDataStore<Verein>
+  public class DiszilpinDataStore : SQLiteDataStore<Disziplin>
   {
-    private readonly IWebService<Verein> _vereineWebService;
+    private readonly IWebService<Disziplin> _vereineWebService;
 
-    public VereineDataStore(IWebService<Verein> vereineWebService)
+    public DiszilpinDataStore(IWebService<Disziplin> vereineWebService)
     {
         _vereineWebService = vereineWebService;
     }

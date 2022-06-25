@@ -1,4 +1,4 @@
-﻿// <copyright file="VereineWebService.cs" company="Marco von Ballmoos">
+﻿// <copyright file="DisziplinWebService.cs" company="Marco von Ballmoos">
 //   Copyright (c) 2021 Marco von Ballmoos. All rights reserved.
 // </copyright>
 
@@ -15,9 +15,9 @@ namespace Wettkampf.Services
   /// <summary>
   /// Example web service showing the usage of the HttpClient.
   /// </summary>
-  public class VereineWebService : IWebService<Verein>
+  public class DisziplinWebService : IWebService<Disziplin>
   {
-    public VereineWebService(IHttpClientFactory clientFactory)
+    public DisziplinWebService(IHttpClientFactory clientFactory)
     {
         if (clientFactory == null) { throw new ArgumentNullException(nameof(clientFactory)); }
 
@@ -30,20 +30,20 @@ namespace Wettkampf.Services
       // _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "JWTToken");
     }
 
-    public async Task<IEnumerable<Verein>> Get()
+    public async Task<IEnumerable<Disziplin>> Get()
     {
       var result = await _client.GetAsync("/vereine/");
 
       if (result.IsSuccessStatusCode)
       {
         var stringResult = await result.Content.ReadAsStringAsync();
-        return JsonConvert.DeserializeObject<IEnumerable<Verein>>(stringResult);
+        return JsonConvert.DeserializeObject<IEnumerable<Disziplin>>(stringResult);
       }
 
       throw new InvalidOperationException("Could not load albums from server.");
     }
 
-    public async Task<int> Post(Verein toPost)
+    public async Task<int> Post(Disziplin toPost)
     {
       var serializedObject = JsonConvert.SerializeObject(toPost);
       var content = new StringContent(serializedObject, Encoding.UTF8, "application/json");

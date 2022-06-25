@@ -17,7 +17,7 @@ namespace Wettkampf.ViewModels
 
     public ListViewModelBase()
     {
-      Title = "Liste der Vereine";
+      Title = "Liste der Diszipline";
       Items = new ObservableCollection<TItem>();
       LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
 
@@ -31,7 +31,7 @@ namespace Wettkampf.ViewModels
       MessagingCenter.Subscribe<object>(this, "DeleteItem", async (sender) =>
       {
           var firstListItem = Items.First();
-          var a = firstListItem as Verein;
+          var a = firstListItem as Disziplin;
           await DataStore.DeleteItemAsync(a.Id);
           await ExecuteLoadItemsCommand();
       });

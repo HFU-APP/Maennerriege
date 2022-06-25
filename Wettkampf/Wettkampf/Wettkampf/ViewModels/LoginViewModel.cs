@@ -31,8 +31,8 @@ namespace Turnverein.ViewModels
             {
                 
                 await dialogService.Show("Login", "Login erfolgreich");
-                //Application.Current.MainPage = new NavigationPage(new VereinePage());
-                await Application.Current.MainPage.Navigation.PushAsync(new VereinePage());
+                //Application.Current.MainPage = new NavigationPage(new DisziplinPage());
+                await Application.Current.MainPage.Navigation.PushAsync(new DisziplinPage());
             }
             else
             {

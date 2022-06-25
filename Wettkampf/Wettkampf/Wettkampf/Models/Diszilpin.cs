@@ -1,6 +1,6 @@
 ﻿namespace Wettkampf.Models
 {
-  public class Verein : ContentItem
+  public class Disziplin : ContentItem
   {
   }
 }

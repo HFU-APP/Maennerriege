@@ -15,14 +15,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Views\NeuerVereinPage.xaml.cs">
-      <DependentUpon>NeuerVereinPage.xaml</DependentUpon>
+    <Compile Update="Views\NeueDisziplinPage.xaml.cs">
+      <DependentUpon>NeueDisziplinPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\VereinePage.xaml.cs">
-      <DependentUpon>VereinePage.xaml</DependentUpon>
+    <Compile Update="Views\DisziplinPage.xaml.cs">
+      <DependentUpon>DisziplinPage.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\VereinDetailPage.xaml.cs">
-      <DependentUpon>VereinDetailPage.xaml</DependentUpon>
+    <Compile Update="Views\DisziplinDetailPage.xaml.cs">
+      <DependentUpon>DisziplinDetailPage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -33,10 +33,10 @@
     <EmbeddedResource Update="Views\AboutPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\VereinDetailPage.xaml">
+    <EmbeddedResource Update="Views\DisziplinDetailPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\VereinePage.xaml">
+    <EmbeddedResource Update="Views\DisziplinPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\LoginPage.xaml">
@@ -45,7 +45,7 @@
     <EmbeddedResource Update="Views\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\NeuerVereinPage.xaml">
+    <EmbeddedResource Update="Views\NeueDisziplinPage.xaml">
       <Generator>MSBuild:Compile</Generator>
     </EmbeddedResource>
   </ItemGroup>

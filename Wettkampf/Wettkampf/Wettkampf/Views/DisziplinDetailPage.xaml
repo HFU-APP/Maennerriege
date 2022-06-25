@@ -5,12 +5,12 @@
     xmlns:viewModels="clr-namespace:Wettkampf.ViewModels;assembly=Wettkampf"
     x:Class="Wettkampf.Views.VereinDetailPage"
     x:Name="BrowseAlbumsPage"
-    x:DataType="viewModels:VereinDetailViewModel"
+    x:DataType="viewModels:DisziplinDetailViewModel"
 
   Title="{Binding Title}">
 
   <StackLayout Spacing="20" Padding="15">
-    <Label Text="Verein:" FontSize="Medium" />
-    <Label Text="{Binding Verein.Title}" FontSize="Small"/>
+    <Label Text="Disziplin:" FontSize="Medium" />
+    <Label Text="{Binding Disziplin.Title}" FontSize="Small"/>
   </StackLayout>
 </ContentPage>

@@ -29,10 +29,10 @@ namespace Wettkampf.Core
     {
       if (container is null) { throw new ArgumentNullException(nameof(container)); }
 
-      container.RegisterSingleton<IDataStore<Verein>, VereineDataStore>();
+      container.RegisterSingleton<IDataStore<Disziplin>, DiszilpinDataStore>();
       container.RegisterSingleton<IDialogService, DialogService>();
-      container.RegisterSingleton<IVereinSaver, VereinSaver>();
-      container.RegisterSingleton<IWebService<Verein>, VereineWebService>();
+      container.RegisterSingleton<IDisziplinSaver, DisziplinSaver>();
+      container.RegisterSingleton<IWebService<Disziplin>, DisziplinWebService>();
       container.RegisterSingleton<IHttpClientFactory, HttpClientFactory>();
 
 

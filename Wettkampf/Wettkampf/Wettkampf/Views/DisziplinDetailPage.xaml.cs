@@ -10,9 +10,9 @@ namespace Wettkampf.Views
 {
   public partial class VereinDetailPage : ContentPage
   {
-    private readonly VereinDetailViewModel _viewModel;
+    private readonly DisziplinDetailViewModel _viewModel;
 
-    public VereinDetailPage(VereinDetailViewModel viewModel)
+    public VereinDetailPage(DisziplinDetailViewModel viewModel)
     {
       InitializeComponent();
 
@@ -23,12 +23,12 @@ namespace Wettkampf.Views
     {
       InitializeComponent();
 
-      var album = new Verein
+      var album = new Disziplin
       {
-        Title = "Verein 1",
+        Title = "Disziplin 1",
       };
 
-      _viewModel = new VereinDetailViewModel(album);
+      _viewModel = new DisziplinDetailViewModel(album);
       BindingContext = _viewModel;
     }
   }

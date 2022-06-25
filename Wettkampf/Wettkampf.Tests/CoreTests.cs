@@ -28,9 +28,9 @@ namespace Wettkampf.Tests
 
       container.RegisterInstance(dialogService);
 
-      var vereinSaver = container.GetInstance<IVereinSaver>();
+      var vereinSaver = container.GetInstance<IDisziplinSaver>();
 
-      var album = new Verein();
+      var album = new Disziplin();
 
       Assert.That(await vereinSaver.TrySaveAsync(album), Is.False);
       A.CallTo(() => dialogService.Show(A<string>.Ignored, A<string>.Ignored)).MustHaveHappenedOnceExactly();

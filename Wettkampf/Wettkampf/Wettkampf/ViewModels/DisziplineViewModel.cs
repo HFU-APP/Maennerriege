@@ -3,7 +3,7 @@ using Wettkampf.Views;
 
 namespace Wettkampf.ViewModels
 {
-  public class VereineViewModel : ListViewModelBase<Verein, NeuerVereinPage>
+  public class DisziplineViewModel : ListViewModelBase<Disziplin, NeueDisziplinPage>
   {
   }
 }

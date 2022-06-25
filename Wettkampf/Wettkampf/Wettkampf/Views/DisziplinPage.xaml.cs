@@ -1,4 +1,4 @@
-﻿// <copyright file="VereinePage.xaml.cs" company="Marco von Ballmoos">
+﻿// <copyright file="DisziplinPage.xaml.cs" company="Marco von Ballmoos">
 //   Copyright (c) 2021 Marco von Ballmoos. All rights reserved.
 // </copyright>
 
@@ -10,27 +10,28 @@ using Xamarin.Forms;
 
 namespace Wettkampf.Views
 {
-  public partial class VereinePage : ContentPage
+  public partial class DisziplinPage : ContentPage
   {
-    private readonly VereineViewModel _viewModel;
+    private readonly DisziplineViewModel _viewModel;
+    
 
-    public VereinePage()
+        public DisziplinPage()
     {
       InitializeComponent();
 
-      BindingContext = _viewModel = new VereineViewModel();
+      BindingContext = _viewModel = new DisziplineViewModel();
     }
 
     private async void OnAlbumSelected(object sender, EventArgs args)
     {
       var layout = (BindableObject)sender;
-      var album = (Verein)layout.BindingContext;
-      await Navigation.PushAsync(new VereinDetailPage(new VereinDetailViewModel(album)));
+      var album = (Disziplin)layout.BindingContext;
+      await Navigation.PushAsync(new VereinDetailPage(new DisziplinDetailViewModel(album)));
     }
 
     private async void AddAlbumClicked(object sender, EventArgs e)
     {
-      await Navigation.PushModalAsync(new NavigationPage(new NeuerVereinPage()));
+      await Navigation.PushModalAsync(new NavigationPage(new NeueDisziplinPage()));
     }
 
     private async void DeleteAlbumClicked(object sender, EventArgs e)
