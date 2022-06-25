@@ -10,7 +10,8 @@
 
   <ContentPage.ToolbarItems>
     <ToolbarItem Text="Add" Clicked="AddAlbumClicked" />
-  </ContentPage.ToolbarItems>
+    <ToolbarItem Text="Delete" Clicked="DeleteAlbumClicked" />
+    </ContentPage.ToolbarItems>
 
   <RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Command="{Binding LoadItemsCommand}">
     <CollectionView x:Name="ItemsCollectionView"
@@ -22,10 +23,6 @@
                                 LineBreakMode="NoWrap" 
                                 Style="{DynamicResource ListItemTextStyle}" 
                                 FontSize="16" />
-            <Label Text="{Binding Description}"
-                                LineBreakMode="NoWrap"
-                                Style="{DynamicResource ListItemDetailTextStyle}"
-                                FontSize="13" />
             <StackLayout.GestureRecognizers>
               <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnAlbumSelected"></TapGestureRecognizer>
             </StackLayout.GestureRecognizers>

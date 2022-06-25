@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
+using Wettkampf.Models;
 using Xamarin.Forms;
 
 namespace Wettkampf.ViewModels
@@ -21,8 +23,17 @@ namespace Wettkampf.ViewModels
 
       MessagingCenter.Subscribe<TPage, TItem>(this, "AddItem", async (obj, item) =>
       {
-        Items.Add(item);
-        await DataStore.AddItemAsync(item);
+          Items.Add(item);
+          await DataStore.AddItemAsync(item);
+          
+      });
+
+      MessagingCenter.Subscribe<object>(this, "DeleteItem", async (sender) =>
+      {
+          var firstListItem = Items.First();
+          var a = firstListItem as Verein;
+          await DataStore.DeleteItemAsync(a.Id);
+          await ExecuteLoadItemsCommand();
       });
     }
 

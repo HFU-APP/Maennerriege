@@ -10,9 +10,7 @@
   Title="{Binding Title}">
 
   <StackLayout Spacing="20" Padding="15">
-    <Label Text="Text:" FontSize="Medium" />
+    <Label Text="Verein:" FontSize="Medium" />
     <Label Text="{Binding Verein.Title}" FontSize="Small"/>
-    <Label Text="Description:" FontSize="Medium" />
-    <Label Text="{Binding Verein.Description}" FontSize="Small"/>
   </StackLayout>
 </ContentPage>

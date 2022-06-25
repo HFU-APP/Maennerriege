@@ -4,6 +4,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -32,7 +33,8 @@ namespace Wettkampf.Services
 
       public async Task<bool> AddItemAsync(T item)
     {
-        return await Connection.InsertAsync(item) == 1;
+            //method InsertAsync returns the number of rows added to the table
+            return await Connection.InsertAsync(item) == 1;
     }
 
     public async Task<bool> DeleteItemAsync(string id)

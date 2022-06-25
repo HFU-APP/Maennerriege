@@ -26,13 +26,6 @@ namespace Wettkampf.Services
         return false;
       }
 
-      if (string.IsNullOrEmpty(verein.Description))
-      {
-        await _dialogService.Show("Validation failed", "The description cannot be empty.");
-
-        return false;
-      }
-
       return true;
     }
 

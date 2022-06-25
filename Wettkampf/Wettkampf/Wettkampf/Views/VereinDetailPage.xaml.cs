@@ -26,7 +26,6 @@ namespace Wettkampf.Views
       var album = new Verein
       {
         Title = "Verein 1",
-        Description = "This is an Verein description."
       };
 
       _viewModel = new VereinDetailViewModel(album);
