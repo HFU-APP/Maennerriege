@@ -16,9 +16,9 @@
       <Label Text="{Binding Verein.Name}" FontSize="Small"/>
       
       <Label Text="Resultat Lauf" FontSize="Medium" />
-      <Editor Text="{Binding Verein.ResultatLauf}" FontSize="Small" Margin="0" />
+      <Editor Text="{Binding Verein.ResultatLauf, Mode=TwoWay}" FontSize="Small" Margin="0" />
 
 
-        <Button Text="Speichern" Clicked="Save_Clicked"></Button>
+      <Button Text="Speichern" Clicked="Save_Clicked"></Button>
     </StackLayout>
 </ContentPage>
