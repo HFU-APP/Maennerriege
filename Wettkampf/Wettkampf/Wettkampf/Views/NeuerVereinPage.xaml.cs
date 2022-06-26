@@ -35,11 +35,7 @@ namespace Wettkampf.Views
 
     private async void Cancel_Clicked(object sender, EventArgs e)
     {
-        if (await _vereinSaver.TrySaveAsync(Verein))
-        {
-            MessagingCenter.Send(this, "AddItem", Verein);
-            await Navigation.PopModalAsync();
-        }
-        }
+        await Navigation.PopModalAsync();
+    }
   }
 }

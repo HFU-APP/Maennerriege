@@ -32,7 +32,12 @@ namespace Wettkampf.Views
       await Navigation.PushModalAsync(new NavigationPage(new NeuerVereinPage()));
     }
 
-    protected override void OnAppearing()
+    private async void DeleteAlbumClicked(object sender, EventArgs e)
+    {
+        MessagingCenter.Send<object>(this, "DeleteItem");
+    }
+
+        protected override void OnAppearing()
     {
       base.OnAppearing();
 

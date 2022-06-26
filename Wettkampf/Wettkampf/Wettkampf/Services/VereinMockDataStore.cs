@@ -11,12 +11,12 @@ namespace Wettkampf.Services
     {
       Items = new List<Verein>()
       {
-        new Verein { Title = "Verein 1", Description = "This is an verein description." },
-        new Verein { Title = "Verein 2", Description = "This is an verein description." },
-        new Verein { Title = "Verein 3", Description = "This is an verein description." },
-        new Verein { Title = "Verein 4", Description = "This is an verein description." },
-        new Verein { Title = "Verein 5", Description = "This is an verein description." },
-        new Verein { Title = "Verein 6", Description = "This is an verein description." }
+        new Verein { Name = "Verein 1", Vorname = "This is an verein description." },
+        new Verein { Name = "Verein 2", Vorname = "This is an verein description." },
+        new Verein { Name = "Verein 3", Vorname = "This is an verein description." },
+        new Verein { Name = "Verein 4", Vorname = "This is an verein description." },
+        new Verein { Name = "Verein 5", Vorname = "This is an verein description." },
+        new Verein { Name = "Verein 6", Vorname = "This is an verein description." }
       };
     }
   }

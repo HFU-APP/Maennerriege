@@ -10,9 +10,15 @@
   Title="{Binding Title}">
 
   <StackLayout Spacing="20" Padding="15">
-    <Label Text="Text:" FontSize="Medium" />
-    <Label Text="{Binding Verein.Title}" FontSize="Small"/>
-    <Label Text="Description:" FontSize="Medium" />
-    <Label Text="{Binding Verein.Description}" FontSize="Small"/>
-  </StackLayout>
+      <Label Text="Vorname:" FontSize="Medium" />
+      <Label Text="{Binding Verein.Vorname}" FontSize="Small"/>
+      <Label Text="Name:" FontSize="Medium" />
+      <Label Text="{Binding Verein.Name}" FontSize="Small"/>
+      
+      <Label Text="Resultat Lauf" FontSize="Medium" />
+      <Editor Text="{Binding Verein.ResultatLauf}" FontSize="Small" Margin="0" />
+
+
+        <Button Text="Speichern" Clicked="Save_Clicked"></Button>
+    </StackLayout>
 </ContentPage>

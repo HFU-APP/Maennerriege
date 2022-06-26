@@ -19,16 +19,16 @@ namespace Wettkampf.Services
     {
       if (verein is null) { throw new ArgumentNullException(nameof(verein)); }
 
-      if (string.IsNullOrEmpty(verein.Title))
+      if (string.IsNullOrEmpty(verein.Name))
       {
-        await _dialogService.Show("Validation failed", "The title cannot be empty.");
+        await _dialogService.Show("Validation failed", "Das Feld für den Namen darf nicht leer sein.");
 
         return false;
       }
 
-      if (string.IsNullOrEmpty(verein.Description))
-      {
-        await _dialogService.Show("Validation failed", "The description cannot be empty.");
+      if (string.IsNullOrEmpty(verein.Vorname))
+            {
+        await _dialogService.Show("Validation failed", "Das Feld für den Vornamen darf nicht leer sein.");
 
         return false;
       }

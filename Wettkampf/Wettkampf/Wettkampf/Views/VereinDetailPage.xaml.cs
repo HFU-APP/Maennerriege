@@ -2,7 +2,10 @@
 //   Copyright (c) 2021 Marco von Ballmoos. All rights reserved.
 // </copyright>
 
+using System;
+using System.Diagnostics;
 using Wettkampf.Models;
+using Wettkampf.Services;
 using Wettkampf.ViewModels;
 using Xamarin.Forms;
 
@@ -10,27 +13,37 @@ namespace Wettkampf.Views
 {
   public partial class VereinDetailPage : ContentPage
   {
-    private readonly VereinDetailViewModel _viewModel;
+      private readonly VereinDetailViewModel _viewModel;
 
-    public VereinDetailPage(VereinDetailViewModel viewModel)
+      public VereinDetailPage(VereinDetailViewModel viewModel)
     {
       InitializeComponent();
 
       BindingContext = _viewModel = viewModel;
     }
 
-    public VereinDetailPage()
+    //public VereinDetailPage()
+    //{
+    //  InitializeComponent();
+
+    //  var verein = new Verein
+    //  {
+    //    Name = "Verein 1",
+    //    Vorname = "This is an Verein description."
+    //  };
+
+    //  _viewModel = new VereinDetailViewModel(verein);
+    //  BindingContext = _viewModel;
+    //}
+
+    private async void Save_Clicked(object sender, EventArgs e)
     {
-      InitializeComponent();
-
-      var album = new Verein
-      {
-        Title = "Verein 1",
-        Description = "This is an Verein description."
-      };
-
-      _viewModel = new VereinDetailViewModel(album);
-      BindingContext = _viewModel;
+        //var id = _viewModel.Verein.Id;
+        //Debug.WriteLine(id);
+        //Debug.WriteLine(_viewModel.Verein.ResultatLauf);
+        //string[] array = {id, _viewModel.Verein.ResultatLauf};
+        MessagingCenter.Send(this, "UpdateVerein", _viewModel.Verein);
+        await Navigation.PopToRootAsync();
     }
   }
 }
