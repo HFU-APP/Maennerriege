@@ -4,13 +4,14 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:vm="clr-namespace:Wettkampf;assembly=Wettkampf"
     x:Class="Wettkampf.Views.VereinePage"
-    x:Name="BrowseAlbumsPage"
     x:DataType="vm:ViewModels.VereineViewModel"
     Title="{Binding Title}">
 
   <ContentPage.ToolbarItems>
     <ToolbarItem x:Name="BTN_Add" Text="Add" Clicked="AddAlbumClicked" />
     <ToolbarItem x:Name="BTN_Delete" Text="Delete" Clicked="DeleteAlbumClicked" />
+    <ToolbarItem x:Name="BTN_DeleteAll" Text="DeleteAll" Clicked="DeleteAllClicked" />
+    <ToolbarItem x:Name="BTN_Generate" Text="Generate" Clicked="GenerateClicked" />
     </ContentPage.ToolbarItems>
 
   <RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Command="{Binding LoadItemsCommand}">
@@ -27,7 +28,11 @@
                                 LineBreakMode="NoWrap"
                                 Style="{DynamicResource ListItemDetailTextStyle}"
                                 FontSize="13" />
-            <StackLayout.GestureRecognizers>
+            <Label Text="{Binding Geburtsdatum}"
+                   LineBreakMode="NoWrap"
+                   Style="{DynamicResource ListItemDetailTextStyle}"
+                   FontSize="13" />
+                        <StackLayout.GestureRecognizers>
               <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnAlbumSelected"></TapGestureRecognizer>
             </StackLayout.GestureRecognizers>
           </StackLayout>

@@ -12,14 +12,14 @@ namespace Wettkampf.Views
   public partial class NeuerVereinPage : ContentPage
   {
       private readonly IVereinSaver _vereinSaver;
-        public Verein Verein { get; set; }
+      public Verein Verein { get; set; }
 
     public NeuerVereinPage()
     {
       InitializeComponent();
 
       _vereinSaver = App.Services.GetInstance<IVereinSaver>();
-            Verein = new Verein();
+      Verein = new Verein();
 
       BindingContext = this;
     }
@@ -31,7 +31,7 @@ namespace Wettkampf.Views
             MessagingCenter.Send(this, "AddItem", Verein);
             await Navigation.PopModalAsync();
         }
-        }
+      }
 
     private async void Cancel_Clicked(object sender, EventArgs e)
     {

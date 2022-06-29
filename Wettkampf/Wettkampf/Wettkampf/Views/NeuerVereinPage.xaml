@@ -17,6 +17,8 @@
         <Editor Text="{Binding Verein.Vorname}" FontSize="Small" Margin="0" />
         <Label Text="Name" FontSize="Medium" />
         <Editor Text="{Binding Verein.Name}" FontSize="Small" Margin="0" />
+        <Label Text="Vereinname" FontSize="Medium" />
+        <Editor Text="{Binding Verein.Vereinname}" FontSize="Small" Margin="0" />
         </StackLayout>
   </ContentPage.Content>
 

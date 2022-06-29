@@ -11,7 +11,8 @@ namespace Wettkampf.Views
 {
   public partial class VereinePage : ContentPage
   {
-    private readonly VereineViewModel _viewModel;
+      public Verein Verein { get; set; }
+      private readonly VereineViewModel _viewModel;
 
     public VereinePage(string accountname)
     {
@@ -23,6 +24,8 @@ namespace Wettkampf.Views
       {
           BTN_Add.IsEnabled = false;
           BTN_Delete.IsEnabled = false;
+          BTN_DeleteAll.IsEnabled = false;
+          BTN_Generate.IsEnabled = false;
       }
     }
 
@@ -46,6 +49,18 @@ namespace Wettkampf.Views
     {
         MessagingCenter.Send<object>(this, "DeleteItem");
     }
+    private void DeleteAllClicked(object sender, EventArgs e)
+    {
+        MessagingCenter.Send<object>(this, "DeleteAllItem");
+    }
+
+    private async void GenerateClicked(object sender, EventArgs e)
+    {
+            //MessagingCenter.Send<object>(this, "GenerateNewItems");
+            Verein = new Verein(){Name = "Muster", Vorname = "Hans"};
+            MessagingCenter.Send(this, "AddItem", Verein);
+            await Navigation.PopToRootAsync();
+        }
 
         protected override void OnAppearing()
         {
@@ -55,5 +70,6 @@ namespace Wettkampf.Views
          _viewModel.IsBusy = true;
         }
     }
-  }
+
+    }
 }

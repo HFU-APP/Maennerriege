@@ -10,5 +10,6 @@ namespace Wettkampf.Models
       public String Vereinname { get; set; }
       public string ResultatLauf { get; set; }
       public String ResultBallwerfen { get; set; }
+      public DateTime Geburtsdatum { get; set; }
   }
 }
