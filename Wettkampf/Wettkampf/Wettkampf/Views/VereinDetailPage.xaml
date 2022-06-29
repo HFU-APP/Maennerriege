@@ -11,17 +11,17 @@
 
   <StackLayout Spacing="20" Padding="15">
       <Label Text="Vorname:" FontSize="Medium" />
-      <Label Text="{Binding Verein.Vorname}" FontSize="Small"/>
+      <Editor x:Name="Editor_Vorname" Text="{Binding Verein.Vorname}" FontSize="Small"/>
       <Label Text="Name:" FontSize="Medium" />
-      <Label Text="{Binding Verein.Name}" FontSize="Small"/>
+      <Editor x:Name="Editor_Nachname" Text="{Binding Verein.Name}" FontSize="Small"/>
       <Label Text="Vereinname:" FontSize="Medium" />
-      <Label Text="{Binding Verein.Vereinname}" FontSize="Small"/>
+        <Editor x:Name="Editor_Vereinname" Text="{Binding Verein.Vereinname}" FontSize="Small"/>
       <Label Text="Geburtsdatum:" FontSize="Medium" />
-      <Label Text="{Binding Verein.Geburtsdatum, StringFormat='{0:dd MMMM yyyy}'}" FontSize="Small"/>
+        <Editor x:Name="Editor_Geburtstag" Text="{Binding Verein.Geburtsdatum, StringFormat='{0:dd MMMM yyyy}'}" FontSize="Small"/>
       <Label Text="Resultat Lauf" FontSize="Medium" />
-      <Editor Text="{Binding Verein.ResultatLauf, Mode=TwoWay}" FontSize="Small" Margin="0" />
+        <Entry x:Name="Entry_ResultLauf" Text="{Binding Verein.ResultatLauf, Mode=TwoWay}" Keyboard="Numeric" Placeholder="Angabe in Minuten" FontSize="Small" Margin="0" />
       <Label Text="Resultat Ballwerfen" FontSize="Medium" />
-      <Editor Text="{Binding Verein.ResultBallwerfen, Mode=TwoWay}" FontSize="Small" Margin="0" />
+        <Entry x:Name="Entry_ResultBallwerfen" Text="{Binding Verein.ResultBallwerfen, Mode=TwoWay}" Keyboard="Numeric" Placeholder="Angabe in Metern" FontSize="Small" Margin="0" />
       <Button Text="Speichern" Clicked="Save_Clicked"></Button>
 
     </StackLayout>

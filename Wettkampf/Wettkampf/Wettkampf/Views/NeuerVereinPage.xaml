@@ -4,7 +4,7 @@
     xmlns:vm="clr-namespace:Wettkampf;assembly=Wettkampf"
     x:Class="Wettkampf.Views.NeuerVereinPage"
     x:DataType="vm:Views.NeuerVereinPage"
-    Title="New Item">
+    Title="Neue Person erstellen">
 
   <ContentPage.ToolbarItems>
     <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" />
@@ -20,11 +20,11 @@
         <Label Text="Vereinname" FontSize="Medium" />
         <Editor Text="{Binding Verein.Vereinname}" FontSize="Small" Margin="0" />
         <Label Text="Resultat des Laufes" FontSize="Medium" />
-        <Editor Text="{Binding Verein.ResultatLauf}" FontSize="Small" Margin="0" />
+        <Entry Text="{Binding Verein.ResultatLauf, Mode=OneWayToSource}" MaxLength="3" Keyboard="Numeric" Placeholder="Angabe in Minuten" FontSize="Small" Margin="0" />
         <Label Text="Resultat des Ballwerfen" FontSize="Medium" />
-        <Editor Text="{Binding Verein.ResultBallwerfen}" FontSize="Small" Margin="0" />
+        <Entry Text="{Binding Verein.ResultBallwerfen, Mode=OneWayToSource}" MaxLength="4" Keyboard="Numeric" Placeholder="Angabe in Metern" FontSize="Small" Margin="0" />
         <Label Text="Geburtsdatum" FontSize="Medium" />
-            <DatePicker x:Name="MyDatePicker" MinimumDate="01/01/1900" Date="{Binding Verein.Geburtsdatum}" FontSize="Small" Margin="0" />
+        <DatePicker x:Name="MyDatePicker" MinimumDate="01/01/1900" Date="{Binding Verein.Geburtsdatum}" FontSize="Small" Margin="0" />
         </StackLayout>
   </ContentPage.Content>
 </ContentPage>

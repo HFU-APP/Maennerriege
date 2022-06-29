@@ -15,11 +15,19 @@ namespace Wettkampf.Views
   {
       private readonly VereinDetailViewModel _viewModel;
 
-      public VereinDetailPage(VereinDetailViewModel viewModel)
+      public VereinDetailPage(VereinDetailViewModel viewModel, string accountname)
     {
       InitializeComponent();
 
       BindingContext = _viewModel = viewModel;
+
+      if (accountname == "User")
+      {
+          Editor_Nachname.IsEnabled = false;
+          Editor_Vorname.IsEnabled = false;
+          Editor_Geburtstag.IsEnabled = false;
+          Editor_Vereinname.IsEnabled = false;
+      }
     }
 
     //public VereinDetailPage()

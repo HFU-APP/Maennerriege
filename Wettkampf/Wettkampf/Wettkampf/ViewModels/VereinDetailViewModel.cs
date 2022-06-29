@@ -10,6 +10,12 @@ namespace Wettkampf.ViewModels
     { 
         Verein = verein;
         Title = verein.Id;
+        Vorname = verein.Vorname;
+        Name = verein.Name;
+        Vereinname = verein.Vereinname;
+        ResultatLauf = verein.ResultatLauf;
+        ResultBallwerfen = verein.ResultBallwerfen;
+        Geburtsdatum = verein.Geburtsdatum;
     }
   }
 }

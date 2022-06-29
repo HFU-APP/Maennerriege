@@ -8,8 +8,8 @@ namespace Wettkampf.Models
       public String Name { get; set; }
       public String Vorname { get; set; }
       public String Vereinname { get; set; }
-      public string ResultatLauf { get; set; }
-      public String ResultBallwerfen { get; set; }
+      public double ResultatLauf { get; set; }
+      public double ResultBallwerfen { get; set; }
       public DateTime Geburtsdatum { get; set; }
   }
 }

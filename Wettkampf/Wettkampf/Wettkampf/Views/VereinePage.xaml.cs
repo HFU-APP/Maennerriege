@@ -16,13 +16,14 @@ namespace Wettkampf.Views
   {
       public Verein Verein { get; set; }
       private readonly VereineViewModel _viewModel;
+      internal string accountName;
 
     public VereinePage(string accountname)
     {
       InitializeComponent();
 
       BindingContext = _viewModel = new VereineViewModel();
-
+      accountName = accountname;
       if (accountname == "User")
       {
           BTN_Add.IsEnabled = false;
@@ -40,7 +41,7 @@ namespace Wettkampf.Views
     {
       var layout = (BindableObject)sender;
       var album = (Verein)layout.BindingContext;
-      await Navigation.PushAsync(new VereinDetailPage(new VereinDetailViewModel(album)));
+      await Navigation.PushAsync(new VereinDetailPage(new VereinDetailViewModel(album), accountName));
     }
 
     private async void AddAlbumClicked(object sender, EventArgs e)

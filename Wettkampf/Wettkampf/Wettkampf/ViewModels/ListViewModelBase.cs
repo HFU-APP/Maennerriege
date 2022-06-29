@@ -83,9 +83,9 @@ MessagingCenter.Subscribe<TPage, TItem>(this, "UpdateVerein", async (obj, item) 
     private List<Verein> GenerateNewItems()
     {
         List<Verein> list = new List<Verein>();
-        list.Add(new Verein {Name = "Mayer", Vorname = "Hans", Vereinname = "Verein 1", ResultBallwerfen = "0", ResultatLauf = "0"});
-        list.Add(new Verein { Name = "Grob", Vorname = "Uli", Vereinname = "Verein 2", ResultBallwerfen = "0", ResultatLauf = "0" });
-        list.Add(new Verein { Name = "Weber", Vorname = "Robert", Vereinname = "Verein 3", ResultBallwerfen = "0", ResultatLauf = "0"});
+        list.Add(new Verein {Name = "Mayer", Vorname = "Hans", Vereinname = "Verein 1", ResultBallwerfen = 0, ResultatLauf = 0});
+        list.Add(new Verein { Name = "Grob", Vorname = "Uli", Vereinname = "Verein 2", ResultBallwerfen = 0, ResultatLauf = 0 });
+        list.Add(new Verein { Name = "Weber", Vorname = "Robert", Vereinname = "Verein 3", ResultBallwerfen = 0, ResultatLauf = 0});
         return list;
     }
 
