@@ -19,7 +19,12 @@
         <Editor Text="{Binding Verein.Name}" FontSize="Small" Margin="0" />
         <Label Text="Vereinname" FontSize="Medium" />
         <Editor Text="{Binding Verein.Vereinname}" FontSize="Small" Margin="0" />
+        <Label Text="Resultat des Laufes" FontSize="Medium" />
+        <Editor Text="{Binding Verein.ResultatLauf}" FontSize="Small" Margin="0" />
+        <Label Text="Resultat des Ballwerfen" FontSize="Medium" />
+        <Editor Text="{Binding Verein.ResultBallwerfen}" FontSize="Small" Margin="0" />
+        <Label Text="Geburtsdatum" FontSize="Medium" />
+            <DatePicker MinimumDate="01/01/2018" MaximumDate="01/01/2022" Date="{Binding Verein.Geburtsdatum}" FontSize="Small" Margin="0" />
         </StackLayout>
   </ContentPage.Content>
-
 </ContentPage>
