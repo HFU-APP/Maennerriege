@@ -22,7 +22,7 @@ namespace Wettkampf
             var loginPage = new LoginPage();
             var navigationPage = new NavigationPage(loginPage);
 
-            //Services.RegisterSingleton<IDataStore<Verein>, VereinMockDataStore>();
+            //Services.RegisterSingleton<IDataStore<Verein>, AccountMockDataStore>();
             Services.RegisterWettkampfServices();
             Services.RegisterInstance<Page>(navigationPage);
             //Services.RegisterSingleton<IDialogService, DialogService>();
@@ -36,7 +36,7 @@ namespace Wettkampf
 
 
 
-        //DependencyService.Register<VereinMockDataStore>();
+        //DependencyService.Register<AccountMockDataStore>();
 
         //MainPage = new NavigationPage(new LoginPage());
     

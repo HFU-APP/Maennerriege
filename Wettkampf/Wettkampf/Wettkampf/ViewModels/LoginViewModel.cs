@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
+using System.Threading.Tasks;
 using Turnverein.Views;
 using Wettkampf;
 using Wettkampf.Models;
@@ -25,36 +27,39 @@ namespace Turnverein.ViewModels
 
         private async void OnLoginClicked(object obj)
         {
-            var dialogService = App.Services.GetInstance<IDialogService>();
-            Account account = new Account(Password, AccountName);
-            if (true)/*(checkLogin(Password, AccountName))*/
+            if (await checkLogin(Password, AccountName))
             {
-                
-                await dialogService.Show("Login", "Login erfolgreich");
                 //Application.Current.MainPage = new NavigationPage(new VereinePage());
                 await Application.Current.MainPage.Navigation.PushAsync(new VereinePage());
             }
-            else
-            {
-                await dialogService.Show("Login", "Login nicht korrekt, kein Benutzername oder kein Passwort");
-            }
-
             // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
             //await Shell.Current.GoToAsync($"//{nameof(ContestPage)}");
         }
 
-        private bool checkLogin(string password, string accountName)
+        private async Task<bool> checkLogin(string password, string accountName)
         {
-            if (password == "1234" && AccountName == "ich")
+            var dialogService = App.Services.GetInstance<IDialogService>();
+            AccountMockDataStore accountMockDataStore = new AccountMockDataStore();
+            var items = await accountMockDataStore.GetItemsAsync(true);
+            bool succress = false;
+            foreach (var item in items)
             {
-                return true;
+                if (accountName == item.AccountName && password == item.Password)
+                {
+                    if (accountName == "Admin")
+                    {
+                        await dialogService.Show("Login", "Login als Admin erfolgreich");
+                        return true;
+                    }
+                    await dialogService.Show("Login", "Login als User erfolgreich");
+                    return true;
+                }
             }
-            else
-            {
-                return false;
+            await dialogService.Show("Login", "Login fehlgeschlagen");
+            return false;
             }
-        }
+    
     }
 
-    
+
 }
