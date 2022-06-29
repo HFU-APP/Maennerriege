@@ -29,8 +29,7 @@ namespace Turnverein.ViewModels
         {
             if (await checkLogin(Password, AccountName))
             {
-                //Application.Current.MainPage = new NavigationPage(new VereinePage());
-                await Application.Current.MainPage.Navigation.PushAsync(new VereinePage());
+                await Application.Current.MainPage.Navigation.PushAsync(new VereinePage(AccountName));
             }
             // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
             //await Shell.Current.GoToAsync($"//{nameof(ContestPage)}");
@@ -41,7 +40,6 @@ namespace Turnverein.ViewModels
             var dialogService = App.Services.GetInstance<IDialogService>();
             AccountMockDataStore accountMockDataStore = new AccountMockDataStore();
             var items = await accountMockDataStore.GetItemsAsync(true);
-            bool succress = false;
             foreach (var item in items)
             {
                 if (accountName == item.AccountName && password == item.Password)

@@ -9,8 +9,8 @@
     Title="{Binding Title}">
 
   <ContentPage.ToolbarItems>
-    <ToolbarItem Text="Add" Clicked="AddAlbumClicked" />
-    <ToolbarItem Text="Delete" Clicked="DeleteAlbumClicked" />
+    <ToolbarItem x:Name="BTN_Add" Text="Add" Clicked="AddAlbumClicked" />
+    <ToolbarItem x:Name="BTN_Delete" Text="Delete" Clicked="DeleteAlbumClicked" />
     </ContentPage.ToolbarItems>
 
   <RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Command="{Binding LoadItemsCommand}">

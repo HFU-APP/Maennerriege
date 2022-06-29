@@ -21,6 +21,7 @@ namespace Wettkampf.ViewModels
       Title = "Liste der Vereine";
       Items = new ObservableCollection<TItem>();
       LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
+      var dialogService = App.Services.GetInstance<IDialogService>();
 
       MessagingCenter.Subscribe<TPage, TItem>(this, "AddItem", async (obj, item) =>
       {
@@ -32,18 +33,17 @@ namespace Wettkampf.ViewModels
       {
           if (Items.Count == 0)
           {
-              var dialogService = App.Services.GetInstance<IDialogService>();
               dialogService.Show("Liste Leer", "Es sind keine Einträge vorhanden");
           }
           else
           {
-              var firstListItem = Items.First();
-              var a = firstListItem as Verein;
+              var lastItemInList = Items.Last();
+              var a = lastItemInList as Verein;
               await DataStore.DeleteItemAsync(a.Id);
               await ExecuteLoadItemsCommand();
           }
-      });
-
+      }); 
+      
       MessagingCenter.Subscribe<TPage, TItem>(this, "UpdateVerein", async (obj, item) =>
       {
           await DataStore.UpdateItemAsync(item);

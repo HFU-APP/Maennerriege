@@ -13,11 +13,21 @@ namespace Wettkampf.Views
   {
     private readonly VereineViewModel _viewModel;
 
-    public VereinePage()
+    public VereinePage(string accountname)
     {
       InitializeComponent();
 
       BindingContext = _viewModel = new VereineViewModel();
+
+      if (accountname == "User")
+      {
+          BTN_Add.IsEnabled = false;
+          BTN_Delete.IsEnabled = false;
+      }
+    }
+
+    public VereinePage()
+    {
     }
 
     private async void OnAlbumSelected(object sender, EventArgs args)
@@ -38,13 +48,12 @@ namespace Wettkampf.Views
     }
 
         protected override void OnAppearing()
-    {
-      base.OnAppearing();
-
-      if (_viewModel.Items.Count == 0)
-      {
-        _viewModel.IsBusy = true;
-      }
+        {
+            base.OnAppearing(); 
+        if (_viewModel.Items.Count == 0)
+        {
+         _viewModel.IsBusy = true;
+        }
     }
   }
 }
