@@ -28,7 +28,7 @@
                                 LineBreakMode="NoWrap"
                                 Style="{DynamicResource ListItemDetailTextStyle}"
                                 FontSize="13" />
-            <Label Text="{Binding Geburtsdatum}"
+                        <Label Text="{Binding Geburtsdatum, StringFormat='{0:dd MMMM yyyy}'}"
                    LineBreakMode="NoWrap"
                    Style="{DynamicResource ListItemDetailTextStyle}"
                    FontSize="13" />

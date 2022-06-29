@@ -24,7 +24,7 @@
         <Label Text="Resultat des Ballwerfen" FontSize="Medium" />
         <Editor Text="{Binding Verein.ResultBallwerfen}" FontSize="Small" Margin="0" />
         <Label Text="Geburtsdatum" FontSize="Medium" />
-        <DatePicker x:Name="MyDatePicker" MinimumDate="01/01/1900" Date="{Binding Verein.Geburtsdatum}" FontSize="Small" Margin="0" />
+            <DatePicker x:Name="MyDatePicker" MinimumDate="01/01/1900" Date="{Binding Verein.Geburtsdatum}" FontSize="Small" Margin="0" />
         </StackLayout>
   </ContentPage.Content>
 </ContentPage>

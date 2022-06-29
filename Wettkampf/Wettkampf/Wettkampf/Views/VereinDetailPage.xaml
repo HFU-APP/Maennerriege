@@ -17,12 +17,12 @@
       <Label Text="Vereinname:" FontSize="Medium" />
       <Label Text="{Binding Verein.Vereinname}" FontSize="Small"/>
       <Label Text="Geburtsdatum:" FontSize="Medium" />
-      <Label Text="{Binding Verein.Geburtsdatum}" FontSize="Small"/>
+      <Label Text="{Binding Verein.Geburtsdatum, StringFormat='{0:dd MMMM yyyy}'}" FontSize="Small"/>
       <Label Text="Resultat Lauf" FontSize="Medium" />
       <Editor Text="{Binding Verein.ResultatLauf, Mode=TwoWay}" FontSize="Small" Margin="0" />
       <Label Text="Resultat Ballwerfen" FontSize="Medium" />
       <Editor Text="{Binding Verein.ResultBallwerfen, Mode=TwoWay}" FontSize="Small" Margin="0" />
-        <Button Text="Speichern" Clicked="Save_Clicked"></Button>
+      <Button Text="Speichern" Clicked="Save_Clicked"></Button>
 
     </StackLayout>
 </ContentPage>

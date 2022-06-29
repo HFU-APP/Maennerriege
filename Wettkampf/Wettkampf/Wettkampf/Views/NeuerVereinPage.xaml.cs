@@ -24,7 +24,8 @@ namespace Wettkampf.Views
       BindingContext = this;
       MyDatePicker.MaximumDate = DateTime.Now;
       MyDatePicker.Date = DateTime.Now;
-        }
+      MyDatePicker.Format = "dd MMMM yyyy";
+    }
 
     private async void Save_Clicked(object sender, EventArgs e)
     {
