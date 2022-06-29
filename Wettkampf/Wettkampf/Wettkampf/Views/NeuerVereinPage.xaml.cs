@@ -22,7 +22,9 @@ namespace Wettkampf.Views
       Verein = new Verein();
 
       BindingContext = this;
-    }
+      MyDatePicker.MaximumDate = DateTime.Now;
+      MyDatePicker.Date = DateTime.Now;
+        }
 
     private async void Save_Clicked(object sender, EventArgs e)
     {
