@@ -3,6 +3,9 @@
 // </copyright>
 
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 using Wettkampf.Models;
 using Wettkampf.ViewModels;
 using Xamarin.Forms;
@@ -62,14 +65,51 @@ namespace Wettkampf.Views
             await Navigation.PopToRootAsync();
         }
 
-        protected override void OnAppearing()
-        {
-            base.OnAppearing(); 
+    protected override void OnAppearing()
+    { 
+        base.OnAppearing(); 
         if (_viewModel.Items.Count == 0)
         {
          _viewModel.IsBusy = true;
         }
     }
+    private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var eingabe = e.NewTextValue;
+            Debug.WriteLine(eingabe);
 
+            if (string.IsNullOrWhiteSpace(eingabe))
+            {
+                eingabe = string.Empty;
+                Debug.WriteLine(eingabe);
+            }
+
+            eingabe = eingabe.ToLower();
+
+            var gefilterteItems = _viewModel.Items.Where(value => value.Vorname.Contains(eingabe)).ToList();
+
+            foreach (var element3 in gefilterteItems)
+            {
+                Debug.WriteLine(element3.Vorname);
+            }
+
+            if (string.IsNullOrWhiteSpace(eingabe))
+            {
+                gefilterteItems = _viewModel.Items.ToList();
+            }
+
+            foreach (var element in _viewModel.Items.ToList())
+            {
+                if (!gefilterteItems.Contains(element))
+                {
+                    _viewModel.Items.Remove(element);
+                    Debug.WriteLine(element.Vorname);
+                }
+                else if (!_viewModel.Items.Contains(element))
+                {
+                    _viewModel.Items.Add(element);
+                }
+            }
+        }
     }
 }

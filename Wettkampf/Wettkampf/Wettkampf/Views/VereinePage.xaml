@@ -12,32 +12,36 @@
     <ToolbarItem x:Name="BTN_Delete" Text="Delete" Clicked="DeleteAlbumClicked" />
     <ToolbarItem x:Name="BTN_DeleteAll" Text="DeleteAll" Clicked="DeleteAllClicked" />
     <ToolbarItem x:Name="BTN_Generate" Text="Generate" Clicked="GenerateClicked" />
-    </ContentPage.ToolbarItems>
+  </ContentPage.ToolbarItems>
 
-  <RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Command="{Binding LoadItemsCommand}">
-    <CollectionView x:Name="ItemsCollectionView"
-                ItemsSource="{Binding Items}">
-      <CollectionView.ItemTemplate>
-        <DataTemplate x:DataType="vm:Models.Verein">
-          <StackLayout Padding="10">
-            <Label Text="{Binding Name}" 
-                                LineBreakMode="NoWrap" 
-                                Style="{DynamicResource ListItemTextStyle}" 
-                                FontSize="16" />
-            <Label Text="{Binding Vorname}"
-                                LineBreakMode="NoWrap"
-                                Style="{DynamicResource ListItemDetailTextStyle}"
-                                FontSize="13" />
-                        <Label Text="{Binding Geburtsdatum, StringFormat='{0:dd MMMM yyyy}'}"
-                   LineBreakMode="NoWrap"
-                   Style="{DynamicResource ListItemDetailTextStyle}"
-                   FontSize="13" />
-                        <StackLayout.GestureRecognizers>
-              <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnAlbumSelected"></TapGestureRecognizer>
-            </StackLayout.GestureRecognizers>
-          </StackLayout>
-        </DataTemplate>
-      </CollectionView.ItemTemplate>
-    </CollectionView>
-  </RefreshView>
+    <StackLayout>
+        <SearchBar TextChanged="SearchBar_TextChanged"></SearchBar>
+        <RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Command="{Binding LoadItemsCommand}">
+            <CollectionView x:Name="ItemsCollectionView"
+                            ItemsSource="{Binding Items}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="vm:Models.Verein">
+                        <StackLayout Padding="10">
+                            <Label Text="{Binding Name}" 
+                                   LineBreakMode="NoWrap" 
+                                   Style="{DynamicResource ListItemTextStyle}" 
+                                   FontSize="16" />
+                            <Label Text="{Binding Vorname}"
+                                   LineBreakMode="NoWrap"
+                                   Style="{DynamicResource ListItemDetailTextStyle}"
+                                   FontSize="13" />
+                            <Label Text="{Binding Geburtsdatum, StringFormat='{0:dd MMMM yyyy}'}"
+                                   LineBreakMode="NoWrap"
+                                   Style="{DynamicResource ListItemDetailTextStyle}"
+                                   FontSize="13" />
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnAlbumSelected"></TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+    </StackLayout>
+ 
 </ContentPage>

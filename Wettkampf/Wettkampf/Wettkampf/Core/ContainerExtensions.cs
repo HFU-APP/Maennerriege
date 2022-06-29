@@ -7,6 +7,7 @@ using Wettkampf.Models;
 using Wettkampf.Services;
 using JetBrains.Annotations;
 using SimpleInjector;
+using Wettkampf.ViewModels;
 
 namespace Wettkampf.Core
 {
