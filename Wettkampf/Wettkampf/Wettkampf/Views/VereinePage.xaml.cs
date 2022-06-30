@@ -17,7 +17,6 @@ namespace Wettkampf.Views
       public Verein Verein { get; set; }
       private readonly VereineViewModel _viewModel;
       internal string accountName;
-      private List<Verein> vereinliste;
 
       public VereinePage(string accountname)
     {
@@ -32,9 +31,6 @@ namespace Wettkampf.Views
           BTN_DeleteAll.IsEnabled = false;
           BTN_Generate.IsEnabled = false;
       }
-
-      vereinliste = new List<Verein>();
-      //ItemsCollectionView.ItemsSource = GetSearchResults(searchBar.Text);
     }
 
     public VereinePage()
@@ -85,58 +81,6 @@ namespace Wettkampf.Views
     }
         private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
-            //var suchwort = e.NewTextValue;
-            //Debug.WriteLine(suchwort);
-
-            //if (string.IsNullOrWhiteSpace(suchwort))
-            //{
-            //    suchwort = string.Empty;
-            //    Debug.WriteLine(suchwort);
-            //}
-
-            //suchwort = suchwort.ToLower();
-
-            //var uebereinstimmendeItems = _viewModel.Items.Where(value => value.Vorname.Contains(suchwort)).ToList();
-
-            //foreach (var element3 in uebereinstimmendeItems)
-            //{
-            //    Debug.WriteLine(element3.Vorname);
-            //}
-
-
-            //foreach (var element in _viewModel.Items)
-            //{
-            //    if (!uebereinstimmendeItems.Contains(element))
-            //    {
-            //        _viewModel.Items.Remove(element);
-            //        //vereinliste.Add(element);
-
-            //        Debug.WriteLine(element.Vorname);
-            //    }
-            //    else if (!_viewModel.Items.Contains(element))
-            //    {
-            //        _viewModel.Items.Add(element);
-            //        //vereinliste.Remove(element);
-            //    }
-
-
-            //}
-
-            //for (int i = _viewModel.Items.Count - 1; i >= 0; i--)
-            //{
-            //    if (!uebereinstimmendeItems.Contains(_viewModel.Items[i]))
-            //    {
-            //        _viewModel.Items.Remove(_viewModel.Items[i]);
-            //        //vereinliste.Add(_viewModel.Items[i]);
-
-            //        Debug.WriteLine(_viewModel.Items[i].Vorname);
-            //    }
-            //    else if (!_viewModel.Items.Contains(_viewModel.Items[i]))
-            //    {
-            //        _viewModel.Items.Add(_viewModel.Items[i]);
-            //        //vereinliste.Remove(_viewModel.Items[i]);
-            //    }
-            //}
             ItemsCollectionView.ItemsSource = GetSearchResults(e.NewTextValue);
         }
     }
