@@ -17,8 +17,9 @@ namespace Wettkampf.Views
       public Verein Verein { get; set; }
       private readonly VereineViewModel _viewModel;
       internal string accountName;
+      private List<Verein> vereinliste;
 
-    public VereinePage(string accountname)
+      public VereinePage(string accountname)
     {
       InitializeComponent();
 
@@ -31,6 +32,9 @@ namespace Wettkampf.Views
           BTN_DeleteAll.IsEnabled = false;
           BTN_Generate.IsEnabled = false;
       }
+
+      vereinliste = new List<Verein>();
+      //ItemsCollectionView.ItemsSource = GetSearchResults(searchBar.Text);
     }
 
     public VereinePage()
@@ -74,43 +78,66 @@ namespace Wettkampf.Views
          _viewModel.IsBusy = true;
         }
     }
-    private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
+    public List<Verein> GetSearchResults(string queryString)
+    {
+        var normalizedQuery = queryString?.ToLower() ?? "";
+        return _viewModel.Items.Where(f => f.Vorname.Contains(normalizedQuery)).ToList();
+    }
+        private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
-            var eingabe = e.NewTextValue;
-            Debug.WriteLine(eingabe);
+            //var suchwort = e.NewTextValue;
+            //Debug.WriteLine(suchwort);
 
-            if (string.IsNullOrWhiteSpace(eingabe))
-            {
-                eingabe = string.Empty;
-                Debug.WriteLine(eingabe);
-            }
+            //if (string.IsNullOrWhiteSpace(suchwort))
+            //{
+            //    suchwort = string.Empty;
+            //    Debug.WriteLine(suchwort);
+            //}
 
-            eingabe = eingabe.ToLower();
+            //suchwort = suchwort.ToLower();
 
-            var gefilterteItems = _viewModel.Items.Where(value => value.Vorname.Contains(eingabe)).ToList();
+            //var uebereinstimmendeItems = _viewModel.Items.Where(value => value.Vorname.Contains(suchwort)).ToList();
 
-            foreach (var element3 in gefilterteItems)
-            {
-                Debug.WriteLine(element3.Vorname);
-            }
+            //foreach (var element3 in uebereinstimmendeItems)
+            //{
+            //    Debug.WriteLine(element3.Vorname);
+            //}
 
-            if (string.IsNullOrWhiteSpace(eingabe))
-            {
-                gefilterteItems = _viewModel.Items.ToList();
-            }
 
-            foreach (var element in _viewModel.Items.ToList())
-            {
-                if (!gefilterteItems.Contains(element))
-                {
-                    _viewModel.Items.Remove(element);
-                    Debug.WriteLine(element.Vorname);
-                }
-                else if (!_viewModel.Items.Contains(element))
-                {
-                    _viewModel.Items.Add(element);
-                }
-            }
+            //foreach (var element in _viewModel.Items)
+            //{
+            //    if (!uebereinstimmendeItems.Contains(element))
+            //    {
+            //        _viewModel.Items.Remove(element);
+            //        //vereinliste.Add(element);
+
+            //        Debug.WriteLine(element.Vorname);
+            //    }
+            //    else if (!_viewModel.Items.Contains(element))
+            //    {
+            //        _viewModel.Items.Add(element);
+            //        //vereinliste.Remove(element);
+            //    }
+
+
+            //}
+
+            //for (int i = _viewModel.Items.Count - 1; i >= 0; i--)
+            //{
+            //    if (!uebereinstimmendeItems.Contains(_viewModel.Items[i]))
+            //    {
+            //        _viewModel.Items.Remove(_viewModel.Items[i]);
+            //        //vereinliste.Add(_viewModel.Items[i]);
+
+            //        Debug.WriteLine(_viewModel.Items[i].Vorname);
+            //    }
+            //    else if (!_viewModel.Items.Contains(_viewModel.Items[i]))
+            //    {
+            //        _viewModel.Items.Add(_viewModel.Items[i]);
+            //        //vereinliste.Remove(_viewModel.Items[i]);
+            //    }
+            //}
+            ItemsCollectionView.ItemsSource = GetSearchResults(e.NewTextValue);
         }
     }
 }

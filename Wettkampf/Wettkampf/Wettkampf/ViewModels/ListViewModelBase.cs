@@ -88,7 +88,6 @@ MessagingCenter.Subscribe<TPage, TItem>(this, "UpdateVerein", async (obj, item) 
         list.Add(new Verein { Name = "Weber", Vorname = "Robert", Vereinname = "Verein 3", ResultBallwerfen = 0, ResultatLauf = 0});
         return list;
     }
-
     private async Task ExecuteLoadItemsCommand()
     {
       IsBusy = true;

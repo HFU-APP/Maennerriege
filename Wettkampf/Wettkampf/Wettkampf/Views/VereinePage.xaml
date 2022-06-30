@@ -15,7 +15,7 @@
   </ContentPage.ToolbarItems>
 
     <StackLayout>
-        <SearchBar TextChanged="SearchBar_TextChanged"></SearchBar>
+        <SearchBar x:Name="searchBar" TextChanged="SearchBar_TextChanged" Placeholder="Suche nach Name"></SearchBar>
         <RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Command="{Binding LoadItemsCommand}">
             <CollectionView x:Name="ItemsCollectionView"
                             ItemsSource="{Binding Items}">
