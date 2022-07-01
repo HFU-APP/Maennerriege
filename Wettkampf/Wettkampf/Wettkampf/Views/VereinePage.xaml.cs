@@ -83,5 +83,12 @@ namespace Wettkampf.Views
         {
             ItemsCollectionView.ItemsSource = GetSearchResults(e.NewTextValue);
         }
-    }
+
+
+        private void OnDeleteSwipeItemInvoked(object sender, EventArgs e)
+        {
+            //CollectionView.SelectedItemProperty.
+            //MessagingCenter.Send<object>(this, "DeleteItem");
+        }
+  }
 }

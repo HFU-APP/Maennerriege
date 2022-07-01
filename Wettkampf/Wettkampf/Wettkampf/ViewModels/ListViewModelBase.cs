@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using Wettkampf.Models;
 using Wettkampf.Services;
 using Xamarin.Forms;
@@ -14,6 +15,7 @@ namespace Wettkampf.ViewModels
     where TPage : class
   {
     public ObservableCollection<TItem> Items { get; set; }
+    public ICommand DeleteCommand => new Command<Verein>(RemovePerson);
 
     public Command LoadItemsCommand { get; set; }
 
@@ -88,7 +90,17 @@ MessagingCenter.Subscribe<TPage, TItem>(this, "UpdateVerein", async (obj, item) 
         list.Add(new Verein { Name = "Weber", Vorname = "Robert", Vereinname = "Verein 3", ResultBallwerfen = 0, ResultatLauf = 0});
         return list;
     }
-    private async Task ExecuteLoadItemsCommand()
+
+    private void RemovePerson(Verein person)
+    {
+        Console.WriteLine($"$lösche: {person.Vorname}");
+        //if (Items.Contains(person))
+        //{
+        //    Items.Remove(person);
+        //}
+    }
+
+        private async Task ExecuteLoadItemsCommand()
     {
       IsBusy = true;
 

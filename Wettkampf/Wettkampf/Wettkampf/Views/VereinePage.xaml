@@ -21,23 +21,39 @@
                             ItemsSource="{Binding Items}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="vm:Models.Verein">
-                        <StackLayout Padding="10">
-                            <Label Text="{Binding Name}" 
+                        <SwipeView>
+                            <SwipeView.LeftItems>
+                                <SwipeItems>
+                                    <SwipeItem Text="Löschen"
+                                               IconImageSource="delete.png"
+                                               BackgroundColor="LightPink"
+                                               Command="{Binding Source={x:Reference ItemsCollectionView}, Path=BindingContext.DeleteCommand}"
+                                               CommandParameter="{Binding}"
+                                               Invoked="OnDeleteSwipeItemInvoked" />
+                                    <SwipeItem Text="Abbrechen"
+                                               IconImageSource="delete.png"
+                                               BackgroundColor="Gray"
+                                               />
+                                </SwipeItems>
+                            </SwipeView.LeftItems>
+                            <StackLayout Padding="10">
+                                <Label Text="{Binding Name}" 
                                    LineBreakMode="NoWrap" 
                                    Style="{DynamicResource ListItemTextStyle}" 
                                    FontSize="16" />
-                            <Label Text="{Binding Vorname}"
+                                <Label Text="{Binding Vorname}"
                                    LineBreakMode="NoWrap"
                                    Style="{DynamicResource ListItemDetailTextStyle}"
                                    FontSize="13" />
-                            <Label Text="{Binding Geburtsdatum, StringFormat='{0:dd MMMM yyyy}'}"
+                                <Label Text="{Binding Geburtsdatum, StringFormat='{0:dd MMMM yyyy}'}"
                                    LineBreakMode="NoWrap"
                                    Style="{DynamicResource ListItemDetailTextStyle}"
                                    FontSize="13" />
-                            <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnAlbumSelected"></TapGestureRecognizer>
+                                <StackLayout.GestureRecognizers>
+                                    <TapGestureRecognizer NumberOfTapsRequired="1" Tapped="OnAlbumSelected"></TapGestureRecognizer>
                             </StackLayout.GestureRecognizers>
                         </StackLayout>
+                        </SwipeView>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>

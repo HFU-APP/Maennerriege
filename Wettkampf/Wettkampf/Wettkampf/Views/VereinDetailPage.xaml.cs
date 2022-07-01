@@ -15,6 +15,7 @@ namespace Wettkampf.Views
   {
       private readonly VereinDetailViewModel _viewModel;
 
+
       public VereinDetailPage(VereinDetailViewModel viewModel, string accountname)
     {
       InitializeComponent();
@@ -52,8 +53,9 @@ namespace Wettkampf.Views
         //string[] array = {id, _viewModel.Verein.ResultatLauf};
         Debug.WriteLine(_viewModel.Verein.Id);
         Debug.WriteLine(_viewModel.Verein is Verein);
-        MessagingCenter.Send(this, "UpdateVerein", _viewModel.Verein);
-        await Navigation.PopToRootAsync();
+            //MessagingCenter.Send(this, "UpdateVerein", _viewModel.Verein);
+            
+            await Navigation.PopToRootAsync();
     }
   }
 }
