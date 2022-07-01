@@ -16,6 +16,8 @@ namespace Wettkampf.ViewModels
   {
     public ObservableCollection<TItem> Items { get; set; }
     public ICommand DeleteCommand => new Command<TItem>(RemovePerson);
+    public ICommand UpdateCommand => new Command<TItem>(UpdatePerson);
+
 
     public Command LoadItemsCommand { get; set; }
 
@@ -107,6 +109,17 @@ namespace Wettkampf.ViewModels
             await ExecuteLoadItemsCommand();
         }
     }
+
+    private async void UpdatePerson(TItem person)
+    {
+        //var pers = person as Verein;
+        //if (Items.Contains(person))
+        //{
+        //    await DataStore.DeleteItemAsync(pers.Id);
+        //    await ExecuteLoadItemsCommand();
+        //}
+        Console.WriteLine("updaten..");
+        }
 
         private async Task ExecuteLoadItemsCommand()
     {

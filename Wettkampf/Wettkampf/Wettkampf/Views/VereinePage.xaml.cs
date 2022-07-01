@@ -30,6 +30,10 @@ namespace Wettkampf.Views
           //BTN_Delete.IsEnabled = false;
           BTN_DeleteAll.IsEnabled = false;
           BTN_Generate.IsEnabled = false;
+
+          //sw_test.Isenabled = false;
+          //SwipeView a = (SwipeView)this.FindByName("swipe1");
+          //a.IsEnabled = false;
       }
     }
 

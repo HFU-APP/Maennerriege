@@ -7,7 +7,8 @@
     x:Name="BrowseAlbumsPage"
     x:DataType="viewModels:VereinDetailViewModel"
 
-  Title="{Binding Title}">
+
+    Title="{Binding Title}">
 
   <StackLayout Spacing="20" Padding="15">
       <Label Text="Vorname:" FontSize="Medium" />
@@ -22,7 +23,7 @@
         <Entry x:Name="Entry_ResultLauf" Text="{Binding Verein.ResultatLauf, Mode=TwoWay}" Keyboard="Numeric" Placeholder="Angabe in Minuten" FontSize="Small" Margin="0" />
       <Label Text="Resultat Ballwerfen" FontSize="Medium" />
         <Entry x:Name="Entry_ResultBallwerfen" Text="{Binding Verein.ResultBallwerfen, Mode=TwoWay}" Keyboard="Numeric" Placeholder="Angabe in Metern" FontSize="Small" Margin="0" />
-      <Button Text="Speichern" Clicked="Save_Clicked"></Button>
-
-    </StackLayout>
+      <!--Button Text="Speichern" Clicked="Save_Clicked"></Button-->
+      <!--Button BindingContext="{StaticResource{viewModels:ItemViewModelBase}}" Text="Speichern"></Button-->
+  </StackLayout>
 </ContentPage>
