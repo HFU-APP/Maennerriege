@@ -9,7 +9,7 @@
 
   <ContentPage.ToolbarItems>
     <ToolbarItem x:Name="BTN_Add" Text="Add" Clicked="AddAlbumClicked" />
-    <ToolbarItem x:Name="BTN_Delete" Text="Delete" Clicked="DeleteAlbumClicked" />
+    <!--ToolbarItem x:Name="BTN_Delete" Text="Delete" Clicked="DeleteAlbumClicked"/-->
     <ToolbarItem x:Name="BTN_DeleteAll" Text="DeleteAll" Clicked="DeleteAllClicked" />
     <ToolbarItem x:Name="BTN_Generate" Text="Generate" Clicked="GenerateClicked" />
   </ContentPage.ToolbarItems>
@@ -28,8 +28,7 @@
                                                IconImageSource="delete.png"
                                                BackgroundColor="LightPink"
                                                Command="{Binding Source={x:Reference ItemsCollectionView}, Path=BindingContext.DeleteCommand}"
-                                               CommandParameter="{Binding}"
-                                               Invoked="OnDeleteSwipeItemInvoked" />
+                                               CommandParameter="{Binding}"/>
                                     <SwipeItem Text="Abbrechen"
                                                IconImageSource="delete.png"
                                                BackgroundColor="Gray"

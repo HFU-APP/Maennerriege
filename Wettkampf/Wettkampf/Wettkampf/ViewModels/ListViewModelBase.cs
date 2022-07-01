@@ -15,7 +15,7 @@ namespace Wettkampf.ViewModels
     where TPage : class
   {
     public ObservableCollection<TItem> Items { get; set; }
-    public ICommand DeleteCommand => new Command<Verein>(RemovePerson);
+    public ICommand DeleteCommand => new Command<TItem>(RemovePerson);
 
     public Command LoadItemsCommand { get; set; }
 
@@ -76,7 +76,7 @@ namespace Wettkampf.ViewModels
           }
       });
 
-MessagingCenter.Subscribe<TPage, TItem>(this, "UpdateVerein", async (obj, item) =>
+    MessagingCenter.Subscribe<TPage, TItem>(this, "UpdateVerein", async (obj, item) =>
       {
           await DataStore.UpdateItemAsync(item);
       });
@@ -91,13 +91,21 @@ MessagingCenter.Subscribe<TPage, TItem>(this, "UpdateVerein", async (obj, item) 
         return list;
     }
 
-    private void RemovePerson(Verein person)
+    private async void RemovePerson(TItem person)
     {
-        Console.WriteLine($"$lösche: {person.Vorname}");
-        //if (Items.Contains(person))
-        //{
-        //    Items.Remove(person);
-        //}
+        var dialogService = App.Services.GetInstance<IDialogService>();
+        var pers = person as Verein;
+        Console.WriteLine($"$lösche: {pers.Vorname}");
+        if (Items.Count == 0)
+        {
+            dialogService.Show("Liste Leer", "Es sind keine Einträge vorhanden");
+        }
+        if (Items.Contains(person))
+        {
+            Items.Remove(person);
+            await DataStore.DeleteItemAsync(pers.Id);
+            await ExecuteLoadItemsCommand();
+        }
     }
 
         private async Task ExecuteLoadItemsCommand()
