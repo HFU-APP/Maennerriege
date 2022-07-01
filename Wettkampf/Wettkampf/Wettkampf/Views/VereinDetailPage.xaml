@@ -25,5 +25,6 @@
         <Entry x:Name="Entry_ResultBallwerfen" Text="{Binding Verein.ResultBallwerfen, Mode=TwoWay}" Keyboard="Numeric" Placeholder="Angabe in Metern" FontSize="Small" Margin="0" />
       <!--Button Text="Speichern" Clicked="Save_Clicked"></Button-->
       <!--Button BindingContext="{StaticResource{viewModels:ItemViewModelBase}}" Text="Speichern"></Button-->
+      <Button Text="Speichern"></Button>
   </StackLayout>
 </ContentPage>
