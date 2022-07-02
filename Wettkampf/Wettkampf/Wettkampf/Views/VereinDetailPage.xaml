@@ -6,11 +6,17 @@
     x:Class="Wettkampf.Views.VereinDetailPage"
     x:Name="BrowseAlbumsPage"
     x:DataType="viewModels:VereinDetailViewModel"
-
-
     Title="{Binding Title}">
+    <ContentPage.Background>
+        <LinearGradientBrush EndPoint="0,1">
+            <GradientStop Color="#2196F3" 
+                          Offset="0.1" />
+            <GradientStop Color="#ffff"
+                          Offset="1.0" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
 
-  <StackLayout Spacing="20" Padding="15">
+    <StackLayout Spacing="20" Padding="15">
       <Label Text="Vorname:" FontSize="Medium" />
       <Editor x:Name="Editor_Vorname" Text="{Binding Verein.Vorname}" FontSize="Small"/>
       <Label Text="Name:" FontSize="Medium" />

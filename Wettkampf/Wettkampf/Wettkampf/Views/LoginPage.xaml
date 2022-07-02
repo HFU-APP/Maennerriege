@@ -15,9 +15,9 @@
     <ContentPage.Background >
         <!-- StartPoint defaults to (0,0) -->
         <LinearGradientBrush EndPoint="1,1">
-            <GradientStop Color="#0000FF" 
+            <GradientStop Color="#1054da" 
                           Offset="0.1" />
-            <GradientStop Color="#FF00FF"
+            <GradientStop Color="#ff00f0"
                           Offset="1.1" />
         </LinearGradientBrush>
     </ContentPage.Background>

@@ -10,6 +10,15 @@
     <ToolbarItem Text="Cancel" Clicked="Cancel_Clicked" />
     <ToolbarItem Text="Save" Clicked="Save_Clicked" />
   </ContentPage.ToolbarItems>
+    <ContentPage.Background >
+        <!-- StartPoint defaults to (0,0) -->
+        <LinearGradientBrush EndPoint="0,1">
+            <GradientStop Color="#2196F3" 
+                          Offset="0.1" />
+            <GradientStop Color="#ffff"
+                          Offset="1.0" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
 
   <ContentPage.Content>
     <StackLayout Spacing="20" Padding="15">

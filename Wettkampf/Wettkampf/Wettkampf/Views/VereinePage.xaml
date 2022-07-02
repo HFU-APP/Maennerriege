@@ -14,6 +14,16 @@
     <ToolbarItem x:Name="BTN_Generate" Text="Generate" Clicked="GenerateClicked" />
   </ContentPage.ToolbarItems>
 
+    <ContentPage.Background >
+        <!-- StartPoint defaults to (0,0) -->
+        <LinearGradientBrush EndPoint="0,1">
+            <GradientStop Color="#2196F3" 
+                          Offset="0.1" />
+            <GradientStop Color="#ffff"
+                          Offset="1.0" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
     <StackLayout>
         <SearchBar x:Name="searchBar" TextChanged="SearchBar_TextChanged" Placeholder="Suche nach Name"></SearchBar>
         <RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Command="{Binding LoadItemsCommand}">
@@ -26,11 +36,11 @@
                                 <SwipeItems>
                                     <SwipeItem Text="Löschen"
                                                IconImageSource="delete.png"
-                                               BackgroundColor="LightPink"
+                                               BackgroundColor="#ED0F14"
                                                Command="{Binding Source={x:Reference ItemsCollectionView}, Path=BindingContext.DeleteCommand}"
                                                CommandParameter="{Binding}"/>
                                     <SwipeItem Text="Abbrechen"
-                                               IconImageSource="delete.png"
+                                               IconImageSource="cancel.png"
                                                BackgroundColor="Gray"
                                                />
                                 </SwipeItems>
