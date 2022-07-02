@@ -11,8 +11,8 @@ namespace Wettkampf.Services
     {
       Items = new List<Account>()
       {
-        new Account {AccountName = "Admin", Password = "admin"},
-        new Account {AccountName = "User", Password = "user"}
+        new Account {AccountName = "Admin", Password = "GrZKy/5QWp7WrKf21hNZUA=="},
+        new Account {AccountName = "User", Password = "IxA5mJA4ZpFBeiAsWLTFRQ=="}
       };
     }
   }

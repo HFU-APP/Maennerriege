@@ -15,9 +15,10 @@ namespace Turnverein.Views
         public LoginPage()
         {
             InitializeComponent();
-            this.BindingContext = new LoginViewModel();
+            this.BindingContext = _viewModel = new LoginViewModel();
             ent_user.Text = "Admin";
             ent_passw.Text = "admin";
         }
+        private readonly LoginViewModel _viewModel;
     }
 }

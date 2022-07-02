@@ -17,8 +17,9 @@
             <Label Text="Username"/>
             <Entry x:Name="ent_user" Placeholder="Username" Text="{Binding AccountName}"/>
             <Label Text="Passwort"/>
-            <Entry x:Name="ent_passw" Placeholder="Passwort" Text="{Binding Password}"/>
+            <Entry x:Name="ent_passw" Placeholder="Passwort" IsPassword="True" Text="{Binding Password}"/>
             <Button VerticalOptions="Center" Text="Login" Command="{Binding LoginCommand}"/>
+            <Label Text="{Binding Output}"></Label>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
