@@ -7,18 +7,31 @@
              xmlns:viewModels="clr-namespace:Turnverein.ViewModels;assembly=Wettkampf"
              mc:Ignorable="d"
              x:Class="Turnverein.Views.LoginPage"
-             Shell.NavBarIsVisible="False">
+             NavigationPage.HasNavigationBar="false">
+
     <ContentPage.BindingContext>
         <viewModels:LoginViewModel />
     </ContentPage.BindingContext>
+    <ContentPage.Background >
+        <!-- StartPoint defaults to (0,0) -->
+        <LinearGradientBrush EndPoint="1,1">
+            <GradientStop Color="#0000FF" 
+                          Offset="0.1" />
+            <GradientStop Color="#FF00FF"
+                          Offset="1.1" />
+        </LinearGradientBrush>
+    </ContentPage.Background>
 
     <ContentPage.Content>
         <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
-            <Label Text="Username"/>
-            <Entry x:Name="ent_user" Placeholder="Username" Text="{Binding AccountName}"/>
-            <Label Text="Passwort"/>
-            <Entry x:Name="ent_passw" Placeholder="Passwort" IsPassword="True" Text="{Binding Password}"/>
-            <Button VerticalOptions="Center" Text="Login" Command="{Binding LoginCommand}"/>
+            <ContentView Style="{StaticResource LogoContent}">
+                <Image Source="SeekPngcom" VerticalOptions="Center" HeightRequest="150"/>
+            </ContentView>
+            <Label TextColor="White" Text="Username"/>
+            <Entry TextColor="White" x:Name="ent_user" Placeholder="Username" Text="{Binding AccountName}"/>
+            <Label TextColor="White" Text="Passwort"/>
+            <Entry TextColor="White"  x:Name="ent_passw" Placeholder="Passwort" IsPassword="True" Text="{Binding Password}"/>
+            <Button CornerRadius="20" VerticalOptions="Center" Text="Login" Command="{Binding LoginCommand}"/>
             <Label Text="{Binding Output}"></Label>
         </StackLayout>
     </ContentPage.Content>

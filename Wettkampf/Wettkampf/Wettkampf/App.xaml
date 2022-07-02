@@ -30,6 +30,10 @@
             <Style TargetType="Editor">
                 <Setter Property="MaxLength" Value="20"></Setter>
             </Style>
+            <Style x:Key="LogoContent" TargetType="ContentView">
+                <Setter Property="Padding" Value="0,50,0,60" />
+                <Setter Property="VerticalOptions" Value="FillAndExpand" />
+            </Style>
         </ResourceDictionary>        
     </Application.Resources>
 </Application>
