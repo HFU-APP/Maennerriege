@@ -34,23 +34,11 @@ namespace Wettkampf.ViewModels
         await DataStore.AddItemAsync(item);
       });
 
-      //MessagingCenter.Subscribe<object>(this, "GenerateNewItems", async (sender) =>
-      //{
-      //    //List<Verein> generierteVereine = GenerateNewItems();
-      //    //foreach (Verein verein in  generierteVereine)
-      //    //{
-      //    //    await DataStore.AddItemAsync(verein as TItem);
-      //    //}
-
-      //    //GenerateNewItems();
-      //    //await DataStore.AddItemAsync(ve as TItem);
-      //});
-
             MessagingCenter.Subscribe<object>(this, "DeleteItem", async (sender) =>
       {
           if (Items.Count == 0)
           {
-              dialogService.Show("Liste Leer", "Es sind keine Einträge vorhanden");
+              await dialogService.Show("Liste Leer", "Es sind keine Einträge vorhanden");
           }
           else
           {
@@ -65,7 +53,7 @@ namespace Wettkampf.ViewModels
       {
           if (Items.Count == 0)
           {
-              dialogService.Show("Liste Leer", "Es sind keine Einträge vorhanden");
+              await dialogService.Show("Liste Leer", "Es sind keine Einträge vorhanden");
           }
           else
           {
@@ -78,8 +66,14 @@ namespace Wettkampf.ViewModels
           }
       });
 
-    MessagingCenter.Subscribe<TPage, TItem>(this, "UpdateVerein", async (obj, item) =>
+      MessagingCenter.Subscribe<object>(this, "GenerateItems", async (sender) =>
       {
+          Console.WriteLine("Test4");
+      });
+
+            MessagingCenter.Subscribe<TPage, TItem>(this, "UpdateVerein", async (obj, item) =>
+      {
+          Console.WriteLine("Test3");
           await DataStore.UpdateItemAsync(item);
       });
     }
