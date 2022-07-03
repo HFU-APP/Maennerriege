@@ -24,14 +24,14 @@
         </LinearGradientBrush>
     </ContentPage.Background>
 
-    <StackLayout>
+    <StackLayout Padding="5">
         <SearchBar x:Name="searchBar" TextChanged="SearchBar_TextChanged" Placeholder="Suche nach Name"></SearchBar>
         <RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Command="{Binding LoadItemsCommand}">
             <CollectionView x:Name="ItemsCollectionView"
                             ItemsSource="{Binding Items}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="vm:Models.Verein">
-                        <SwipeView>
+                        <SwipeView BackgroundColor="Transparent">
                             <SwipeView.LeftItems>
                                 <SwipeItems>
                                     <SwipeItem Text="Löschen"
@@ -45,7 +45,7 @@
                                                />
                                 </SwipeItems>
                             </SwipeView.LeftItems>
-                            <StackLayout Padding="10">
+                            <StackLayout Margin="5" BackgroundColor="Transparent">
                                 <StackLayout Orientation="Horizontal">
                                     <Label Text="{Binding Vorname}"
                                            FontAttributes="Bold"

@@ -85,7 +85,7 @@ namespace Turnverein.ViewModels
 
         }
 
-        private async Task<bool> checkLogin(string password, string accountName)
+        public async Task<bool> checkLogin(string password, string accountName)
         {
             var dialogService = App.Services.GetInstance<IDialogService>();
             AccountMockDataStore accountMockDataStore = new AccountMockDataStore();

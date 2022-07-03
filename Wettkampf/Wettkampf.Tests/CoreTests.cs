@@ -8,8 +8,10 @@ using FakeItEasy;
 using Wettkampf.Core;
 using Wettkampf.Views;
 using NUnit.Framework;
+using Turnverein.ViewModels;
 using Wettkampf.Models;
 using Wettkampf.Services;
+using Wettkampf.ViewModels;
 using Xamarin.Forms;
 
 namespace Wettkampf.Tests
@@ -18,8 +20,8 @@ namespace Wettkampf.Tests
   public class CoreTests
   {
     [Test]
-    public async Task TestSaveEmptyAlbum()
-{
+    public async Task TestSaveEmptyPersonList()
+    {
       var container = ContainerExtensions
         .CreateContainer()
         .RegisterWettkampfServices();
@@ -30,10 +32,41 @@ namespace Wettkampf.Tests
 
       var vereinSaver = container.GetInstance<IVereinSaver>();
 
-      var album = new Verein();
+      var verein = new Verein();
 
-      Assert.That(await vereinSaver.TrySaveAsync(album), Is.False);
+      Assert.That(await vereinSaver.TrySaveAsync(verein), Is.False);
       A.CallTo(() => dialogService.Show(A<string>.Ignored, A<string>.Ignored)).MustHaveHappenedOnceExactly();
-}
-  }
+    }
+
+        //[Test]
+        //public async Task TestInserPerson()
+        //{
+
+
+        //    Verein verein = new Verein();
+
+        //    ListViewModelBase<Verein, VereineViewModel> a = new ListViewModelBase<Verein, VereineViewModel>();
+        //    int old = a.Items.Count;
+
+        //    VereineViewModel b = new VereineViewModel();
+        //    b.Items.Add(verein);
+
+        //    int neu = a.Items.Count;
+
+        //    Assert.IsTrue(neu == old + 1);
+        //}
+
+        [Test]
+        public async Task TestLogin()
+        {
+            LoginViewModel a = new LoginViewModel();
+            bool c = await a.checkLogin("Admin", "admin");
+
+            Assert.AreEqual(true, c);
+
+            
+        }
+
+
+    }
 }
