@@ -9,7 +9,6 @@
 
   <ContentPage.ToolbarItems>
     <ToolbarItem x:Name="BTN_Add" Text="Add" Clicked="AddAlbumClicked" />
-    <!--ToolbarItem x:Name="BTN_Delete" Text="Delete" Clicked="DeleteAlbumClicked"/-->
     <ToolbarItem x:Name="BTN_DeleteAll" Text="DeleteAll" Clicked="DeleteAllClicked" />
     <ToolbarItem x:Name="BTN_Generate" Text="Generate" Clicked="GenerateClicked" />
   </ContentPage.ToolbarItems>

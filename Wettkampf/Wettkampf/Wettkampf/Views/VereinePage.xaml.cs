@@ -62,12 +62,10 @@ namespace Wettkampf.Views
         MessagingCenter.Send<object>(this, "DeleteAllItem");
     }
 
-    private async void GenerateClicked(object sender, EventArgs e)
+    private void GenerateClicked(object sender, EventArgs e)
     {
-            //MessagingCenter.Send<object>(this, "GenerateNewItems");
-            Verein = new Verein(){Name = "Muster", Vorname = "Hans"};
-            MessagingCenter.Send(this, "AddItem", Verein);
-            await Navigation.PopToRootAsync();
+        MessagingCenter.Send<object>(this, "GenerateItems");
+        
         }
 
     protected override void OnAppearing()

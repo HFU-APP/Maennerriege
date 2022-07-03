@@ -51,10 +51,14 @@ namespace Wettkampf.Views
         //Debug.WriteLine(id);
         //Debug.WriteLine(_viewModel.Verein.ResultatLauf);
         //string[] array = {id, _viewModel.Verein.ResultatLauf};
-        Debug.WriteLine(_viewModel.Verein.Id);
-        Debug.WriteLine(_viewModel.Verein is Verein);
-            //MessagingCenter.Send(this, "UpdateVerein", _viewModel.Verein);
-            await Navigation.PopToRootAsync();
+
+        //Debug.WriteLine(_viewModel.Verein.Id);
+        //Debug.WriteLine(_viewModel.Verein is Verein);
+        //    //MessagingCenter.Send(this, "UpdateVerein", _viewModel.Verein);
+        //    await Navigation.PopToRootAsync();
+        Console.WriteLine("test");
+        Verein a = _viewModel.Verein as Verein;
+        MessagingCenter.Send(this, "UpdateVerein", a);
     }
   }
 }
