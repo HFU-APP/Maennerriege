@@ -5,7 +5,7 @@
     xmlns:vm="clr-namespace:Wettkampf;assembly=Wettkampf"
     x:Class="Wettkampf.Views.VereinePage"
     x:DataType="vm:ViewModels.VereineViewModel"
-    Title="{Binding Title}">
+    >
 
   <ContentPage.ToolbarItems>
     <ToolbarItem x:Name="BTN_Add" Text="Add" Clicked="AddAlbumClicked" />
@@ -25,7 +25,7 @@
     </ContentPage.Background>
 
     <StackLayout Padding="5">
-        <SearchBar x:Name="searchBar" TextChanged="SearchBar_TextChanged" Placeholder="Suche nach Name"></SearchBar>
+        <SearchBar x:Name="searchBar" TextChanged="SearchBar_TextChanged" Placeholder="Suche nach Vorname"></SearchBar>
         <RefreshView IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Command="{Binding LoadItemsCommand}">
             <CollectionView x:Name="ItemsCollectionView"
                             ItemsSource="{Binding Items}">

@@ -27,13 +27,20 @@ namespace Wettkampf.Services
       }
 
       if (string.IsNullOrEmpty(verein.Vorname))
-            {
+      {
         await _dialogService.Show("Validation failed", "Das Feld für den Vornamen darf nicht leer sein.");
 
         return false;
       }
 
-      return true;
+      if (string.IsNullOrEmpty(verein.Vereinname))
+      {
+          await _dialogService.Show("Validation failed", "Das Feld für den Vereinname darf nicht leer sein.");
+
+          return false;
+      }
+
+        return true;
     }
 
     private readonly IDialogService _dialogService;
