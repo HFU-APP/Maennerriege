@@ -82,6 +82,7 @@ namespace Wettkampf.ViewModels
                 foreach (var element in itemFactory.CreateItems())
                 {
                     Items.Add(element);
+                    await DataStore.AddItemAsync(element);
                 }
                 
                 
