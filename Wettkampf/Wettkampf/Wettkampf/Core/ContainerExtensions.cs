@@ -32,6 +32,7 @@ namespace Wettkampf.Core
       container.RegisterSingleton<IDataStore<Verein>, SQLiteDataStore<Verein>>();
       container.RegisterSingleton<IDialogService, DialogService>();
       container.RegisterSingleton<IVereinSaver, VereinSaver>();
+      container.RegisterSingleton<IItemFactory<Verein>, VereinFactory>();
 
       return container;
     }

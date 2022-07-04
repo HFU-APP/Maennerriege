@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
@@ -7,16 +6,17 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Wettkampf.Models;
 using Wettkampf.Services;
+using Wettkampf.Views;
 using Xamarin.Forms;
 
 namespace Wettkampf.ViewModels
 {
-  public class ListViewModelBase<TItem, TPage> : ItemViewModelBase<TItem>
+    public class ListViewModelBase<TItem, TPage> : ItemViewModelBase<TItem>
     where TPage : class
+  where TItem : class
   {
     public ObservableCollection<TItem> Items { get; set; }
     public ICommand DeleteCommand => new Command<TItem>(RemovePerson);
-    public ICommand UpdateCommand => new Command<TItem>(UpdatePerson);
 
 
     public Command LoadItemsCommand { get; set; }
@@ -27,6 +27,7 @@ namespace Wettkampf.ViewModels
       Items = new ObservableCollection<TItem>();
       LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
       var dialogService = App.Services.GetInstance<IDialogService>();
+      itemFactory = App.Services.GetInstance<IItemFactory<TItem>>();
 
       MessagingCenter.Subscribe<TPage, TItem>(this, "AddItem", async (obj, item) =>
       {
@@ -75,26 +76,25 @@ namespace Wettkampf.ViewModels
           }
       });
 
-      MessagingCenter.Subscribe<object>(this, "GenerateItems", async (sender) =>
-      {
-          Console.WriteLine("Test4");
-      });
+            MessagingCenter.Subscribe<object>(this, "GenerateItems", async (sender) =>
+            {
+                Console.WriteLine("Test4");
+                foreach (var element in itemFactory.CreateItems())
+                {
+                    Items.Add(element);
+                }
+                
+                
+            });
 
-            MessagingCenter.Subscribe<TPage, TItem>(this, "UpdateVerein", async (obj, item) =>
+            MessagingCenter.Subscribe<TItem>(this, "UpdateVerein", async (item) =>
       {
           Console.WriteLine("Test3");
           await DataStore.UpdateItemAsync(item);
+          //await ExecuteLoadItemsCommand();
       });
     }
 
-    private List<Verein> GenerateNewItems()
-    {
-        List<Verein> list = new List<Verein>();
-        list.Add(new Verein {Name = "Mayer", Vorname = "Hans", Vereinname = "Verein 1", ResultBallwerfen = 0, ResultatLauf = 0});
-        list.Add(new Verein { Name = "Grob", Vorname = "Uli", Vereinname = "Verein 2", ResultBallwerfen = 0, ResultatLauf = 0 });
-        list.Add(new Verein { Name = "Weber", Vorname = "Robert", Vereinname = "Verein 3", ResultBallwerfen = 0, ResultatLauf = 0});
-        return list;
-    }
 
     private async void RemovePerson(TItem person)
     {
@@ -112,17 +112,6 @@ namespace Wettkampf.ViewModels
             await ExecuteLoadItemsCommand();
         }
     }
-
-    private async void UpdatePerson(TItem person)
-    {
-        //var pers = person as Verein;
-        //if (Items.Contains(person))
-        //{
-        //    await DataStore.DeleteItemAsync(pers.Id);
-        //    await ExecuteLoadItemsCommand();
-        //}
-        Console.WriteLine("updaten..");
-        }
 
         private async Task ExecuteLoadItemsCommand()
     {
@@ -146,5 +135,7 @@ namespace Wettkampf.ViewModels
         IsBusy = false;
       }
     }
+
+        private IItemFactory<TItem> itemFactory;
   }
 }

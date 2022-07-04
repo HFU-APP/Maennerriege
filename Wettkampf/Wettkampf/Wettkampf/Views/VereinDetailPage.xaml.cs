@@ -58,7 +58,9 @@ namespace Wettkampf.Views
         //    await Navigation.PopToRootAsync();
         Console.WriteLine("test");
         Verein a = _viewModel.Verein as Verein;
-        MessagingCenter.Send(this, "UpdateVerein", a);
+
+
+        MessagingCenter.Send(a, "UpdateVerein");
     }
   }
 }

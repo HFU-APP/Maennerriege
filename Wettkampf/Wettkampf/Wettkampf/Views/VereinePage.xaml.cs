@@ -65,8 +65,8 @@ namespace Wettkampf.Views
     private void GenerateClicked(object sender, EventArgs e)
     {
         MessagingCenter.Send<object>(this, "GenerateItems");
-        
-        }
+
+    }
 
     protected override void OnAppearing()
     { 
