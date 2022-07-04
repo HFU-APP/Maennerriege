@@ -67,7 +67,7 @@ namespace Wettkampf.Tests
 
             var dialogService = A.Fake<IDialogService>();
 
-            container.RegisterInstance(dialogService);
+            App.Services.RegisterInstance(dialogService);
 
             LoginViewModel a = new LoginViewModel();
             //bool c = await a.checkLogin("Admin", "admin");
