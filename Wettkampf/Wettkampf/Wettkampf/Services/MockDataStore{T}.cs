@@ -31,7 +31,7 @@ namespace Wettkampf.Services
 
     public async Task<bool> DeleteItemAsync(string id)
     {
-      var oldItem = Items.FirstOrDefault(arg => arg.Id == id);
+      var oldItem = Items.FirstOrDefault(arg => arg.Id.ToString() == id);
       Items.Remove(oldItem);
 
       return await Task.FromResult(true);
@@ -39,7 +39,7 @@ namespace Wettkampf.Services
 
     public async Task<T> GetItemAsync(string id)
     {
-      return await Task.FromResult(Items.FirstOrDefault(s => s.Id == id));
+      return await Task.FromResult(Items.FirstOrDefault(s => s.Id.ToString() == id));
     }
 
     public async Task<IEnumerable<T>> GetItemsAsync(bool forceRefresh = false)

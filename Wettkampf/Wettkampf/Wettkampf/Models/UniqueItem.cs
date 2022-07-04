@@ -9,7 +9,7 @@ namespace Wettkampf.Models
       // [PrimaryKey, AutoIncrement]
       // public int Id { get; set; }
 
-      [PrimaryKey]
-        public string Id { get; set; } = Guid.NewGuid().ToString();
+      [PrimaryKey, AutoIncrement]
+        public int Id { get; set; }
   }
 }

@@ -60,6 +60,6 @@ namespace Wettkampf.Services
 /// <summary>
         /// Gets the static path to the database. The <see cref="Environment.SpecialFolder"/> is used to resolve the right path.
         /// </summary>
-        private static string DatabasePath => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Vereine.db3");
+        private static string DatabasePath => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Vereine1.db3");
   }
 }

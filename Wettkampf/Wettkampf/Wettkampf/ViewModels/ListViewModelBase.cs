@@ -30,8 +30,17 @@ namespace Wettkampf.ViewModels
 
       MessagingCenter.Subscribe<TPage, TItem>(this, "AddItem", async (obj, item) =>
       {
-        Items.Add(item);
-        await DataStore.AddItemAsync(item);
+          try
+          {
+              Items.Add(item);
+              await DataStore.AddItemAsync(item);
+          }
+          catch (SQLite.SQLiteException e)
+          {
+              Console.WriteLine(e);
+              await dialogService.Show("Fehler beim hinzufügen", "Bitte fügen Sie die Person erneut hinzu");
+          }
+          
       });
 
             MessagingCenter.Subscribe<object>(this, "DeleteItem", async (sender) =>
@@ -44,7 +53,7 @@ namespace Wettkampf.ViewModels
           {
               var lastItemInList = Items.Last();
               var lasteitem = lastItemInList as Verein;
-              await DataStore.DeleteItemAsync(lasteitem.Id);
+              await DataStore.DeleteItemAsync(lasteitem.Id.ToString());
               await ExecuteLoadItemsCommand();
           }
       });
@@ -60,7 +69,7 @@ namespace Wettkampf.ViewModels
               foreach (var item in Items)
               {
                   var currentitem = item as Verein;
-                  await DataStore.DeleteItemAsync(currentitem.Id);
+                  await DataStore.DeleteItemAsync(currentitem.Id.ToString());
               }
               await ExecuteLoadItemsCommand();
           }
@@ -99,7 +108,7 @@ namespace Wettkampf.ViewModels
         if (Items.Contains(person))
         {
             Items.Remove(person);
-            await DataStore.DeleteItemAsync(pers.Id);
+            await DataStore.DeleteItemAsync(pers.Id.ToString());
             await ExecuteLoadItemsCommand();
         }
     }

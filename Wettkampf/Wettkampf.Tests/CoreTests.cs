@@ -8,6 +8,7 @@ using FakeItEasy;
 using Wettkampf.Core;
 using Wettkampf.Views;
 using NUnit.Framework;
+using SimpleInjector;
 using Turnverein.ViewModels;
 using Wettkampf.Models;
 using Wettkampf.Services;
@@ -59,12 +60,40 @@ namespace Wettkampf.Tests
         [Test]
         public async Task TestLogin()
         {
+            var container = ContainerExtensions
+                .CreateContainer()
+                .RegisterWettkampfServices();
+
+
+            var dialogService = A.Fake<IDialogService>();
+
+            container.RegisterInstance(dialogService);
+
             LoginViewModel a = new LoginViewModel();
-            bool c = await a.checkLogin("Admin", "admin");
+            //bool c = await a.checkLogin("Admin", "admin");
 
-            Assert.AreEqual(true, c);
 
-            
+            Assert.That(await a.checkLogin("Admin", "admin"), Is.True);
+            A.CallTo(() => dialogService.Show(A<string>.Ignored, A<string>.Ignored)).MustHaveHappenedOnceExactly();
+        }
+
+        [Test]
+        public async Task Testtest()
+        {
+            var container = ContainerExtensions
+                .CreateContainer()
+                .RegisterWettkampfServices();
+
+            var dialogService = A.Fake<IDialogService>();
+
+            container.RegisterInstance(dialogService);
+
+            var vereinSaver = container.GetInstance<IVereinSaver>();
+
+            var verein = new Verein();
+
+            Assert.That(await vereinSaver.TrySaveAsync(verein), Is.False);
+            A.CallTo(() => dialogService.Show(A<string>.Ignored, A<string>.Ignored)).MustHaveHappenedOnceExactly();
         }
 
 
