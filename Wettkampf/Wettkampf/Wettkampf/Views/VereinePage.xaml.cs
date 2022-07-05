@@ -27,7 +27,6 @@ namespace Wettkampf.Views
       if (accountname == "User")
       {
           BTN_Add.IsEnabled = false;
-          //BTN_Delete.IsEnabled = false;
           BTN_DeleteAll.IsEnabled = false;
           BTN_Generate.IsEnabled = false;
 
@@ -53,10 +52,6 @@ namespace Wettkampf.Views
       await Navigation.PushModalAsync(new NavigationPage(new NeuerVereinPage()));
     }
 
-    //private async void DeleteAlbumClicked(object sender, EventArgs e)
-    //{
-    //    MessagingCenter.Send<object>(this, "DeleteItem");
-    //}
     private void DeleteAllClicked(object sender, EventArgs e)
     {
         MessagingCenter.Send<object>(this, "DeleteAllItem");
@@ -79,7 +74,7 @@ namespace Wettkampf.Views
     public List<Verein> GetSearchResults(string queryString)
     {
         var normalizedQuery = queryString?.ToLower() ?? "";
-        return _viewModel.Items.Where(f => f.Vorname.Contains(normalizedQuery)).ToList();
+        return _viewModel.Items.Where(f => f.Vorname.ToLower().Contains(normalizedQuery)).ToList();
     }
         private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {

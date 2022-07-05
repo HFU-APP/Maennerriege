@@ -26,10 +26,12 @@ namespace Wettkampf.Views
       {
           Editor_Nachname.IsEnabled = false;
           Editor_Vorname.IsEnabled = false;
-          Editor_Geburtstag.IsEnabled = false;
           Editor_Vereinname.IsEnabled = false;
+          MyDatePicker.IsEnabled = false;
       }
-    }
+      MyDatePicker.MaximumDate = DateTime.Now;
+      MyDatePicker.Format = "dd MMMM yyyy";
+      }
 
     //public VereinDetailPage()
     //{

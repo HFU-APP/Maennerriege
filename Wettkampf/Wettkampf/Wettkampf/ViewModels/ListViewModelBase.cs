@@ -78,21 +78,18 @@ namespace Wettkampf.ViewModels
 
             MessagingCenter.Subscribe<object>(this, "GenerateItems", async (sender) =>
             {
-                Console.WriteLine("Test4");
                 foreach (var element in itemFactory.CreateItems())
                 {
                     Items.Add(element);
                     await DataStore.AddItemAsync(element);
                 }
-                
-                
             });
 
             MessagingCenter.Subscribe<TItem>(this, "UpdateVerein", async (item) =>
       {
           Console.WriteLine("Test3");
           await DataStore.UpdateItemAsync(item);
-          //await ExecuteLoadItemsCommand();
+          await ExecuteLoadItemsCommand(); // wieder hinzugefügt
       });
     }
 
