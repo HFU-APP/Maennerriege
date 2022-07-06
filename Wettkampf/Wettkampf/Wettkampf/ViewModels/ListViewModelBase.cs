@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Wettkampf.Models;
 using Wettkampf.Services;
-using Wettkampf.Views;
 using Xamarin.Forms;
 
 namespace Wettkampf.ViewModels
@@ -16,9 +15,6 @@ namespace Wettkampf.ViewModels
   where TItem : class
   {
     public ObservableCollection<TItem> Items { get; set; }
-    public ICommand DeleteCommand => new Command<TItem>(RemovePerson);
-
-
     public Command LoadItemsCommand { get; set; }
 
     public ListViewModelBase()
@@ -41,10 +37,9 @@ namespace Wettkampf.ViewModels
               Console.WriteLine(e);
               await dialogService.Show("Fehler beim hinzufügen", "Bitte fügen Sie die Person erneut hinzu");
           }
-          
       });
 
-            MessagingCenter.Subscribe<object>(this, "DeleteItem", async (sender) =>
+      MessagingCenter.Subscribe<object>(this, "DeleteItem", async (sender) =>
       {
           if (Items.Count == 0)
           {
@@ -76,23 +71,22 @@ namespace Wettkampf.ViewModels
           }
       });
 
-            MessagingCenter.Subscribe<object>(this, "GenerateItems", async (sender) =>
-            {
-                foreach (var element in itemFactory.CreateItems())
-                {
-                    Items.Add(element);
-                    await DataStore.AddItemAsync(element);
-                }
-            });
+      MessagingCenter.Subscribe<object>(this, "GenerateItems", async (sender) =>
+      { 
+          foreach (var element in itemFactory.CreateItems())
+          {
+              Items.Add(element);
+              await DataStore.AddItemAsync(element);
+          }
+      });
 
-            MessagingCenter.Subscribe<TItem>(this, "UpdateVerein", async (item) =>
-      {
+      MessagingCenter.Subscribe<TItem>(this, "UpdateVerein", async (item) =>
+      { 
           Console.WriteLine("Test3");
           await DataStore.UpdateItemAsync(item);
           await ExecuteLoadItemsCommand(); // wieder hinzugefügt
       });
     }
-
 
     private async void RemovePerson(TItem person)
     {
@@ -111,7 +105,7 @@ namespace Wettkampf.ViewModels
         }
     }
 
-        private async Task ExecuteLoadItemsCommand()
+    private async Task ExecuteLoadItemsCommand()
     {
       IsBusy = true;
 
@@ -134,6 +128,6 @@ namespace Wettkampf.ViewModels
       }
     }
 
-        private IItemFactory<TItem> itemFactory;
+    private IItemFactory<TItem> itemFactory;
   }
 }

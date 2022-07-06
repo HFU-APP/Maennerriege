@@ -1,7 +1,4 @@
-﻿// <copyright file="IPasswordEncryptionService.cs" company="Marco von Ballmoos">
-//   Copyright (c) 2021 Marco von Ballmoos. All rights reserved.
-// </copyright>
-
+﻿
 namespace Wettkampf.Services
 {
   public interface IPasswordEncryptionService

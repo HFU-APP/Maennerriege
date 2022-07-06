@@ -1,7 +1,4 @@
-﻿// <copyright file="VereinSaver.cs" company="Marco von Ballmoos">
-//   Copyright (c) 2021 Marco von Ballmoos. All rights reserved.
-// </copyright>
-
+﻿
 using System;
 using System.Threading.Tasks;
 using Wettkampf.Models;
@@ -40,7 +37,7 @@ namespace Wettkampf.Services
           return false;
       }
 
-        return true;
+      return true;
     }
 
     private readonly IDialogService _dialogService;

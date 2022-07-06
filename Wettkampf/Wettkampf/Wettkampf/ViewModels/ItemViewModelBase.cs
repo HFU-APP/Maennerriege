@@ -1,5 +1,4 @@
 ﻿using Wettkampf.Services;
-using Xamarin.Forms;
 
 namespace Wettkampf.ViewModels
 {

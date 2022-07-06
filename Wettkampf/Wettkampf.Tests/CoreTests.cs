@@ -73,7 +73,7 @@ namespace Wettkampf.Tests
             //bool c = await a.checkLogin("Admin", "admin");
 
 
-            Assert.That(await a.checkLogin("Admin", "admin"), Is.True);
+            Assert.That(await a.CheckLogin("Admin", "admin"), Is.True);
             A.CallTo(() => dialogService.Show(A<string>.Ignored, A<string>.Ignored)).MustHaveHappenedOnceExactly();
         }
 

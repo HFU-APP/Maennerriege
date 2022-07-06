@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Input;
-using Turnverein.Views;
 using Wettkampf;
-using Wettkampf.Models;
 using Wettkampf.Services;
 using Wettkampf.ViewModels;
 using Wettkampf.Views;
@@ -39,15 +34,12 @@ namespace Turnverein.ViewModels
         public LoginViewModel()
         {
             LoginCommand = new Command(OnLoginClicked);
-            //EncryptCommand = new Command(EncryptWithPassword);
         }
-
 
         private (IPasswordEncryptionService service, byte[] key) GetEncryptionTools()
         {
             var service = DependencyService.Get<IPasswordEncryptionService>();
             var key = service.GenerateKey(Password);
-
             return (service, key);
         }
 
@@ -61,13 +53,11 @@ namespace Turnverein.ViewModels
             if (string.IsNullOrEmpty(AccountName))
             {
                 Show("Kein User Name", "Bitte geben Sie ein Benutzername ein");
-
                 return;
             }
             if (string.IsNullOrEmpty(Password))
             {
                 Show("Kein Passwort", "Bitte geben ein Passwort ein");
-
                 return;
             }
 
@@ -76,16 +66,14 @@ namespace Turnverein.ViewModels
 
             Output = Convert.ToBase64String(encryptedValue);
 
-
-
-            if (await checkLogin(Output, AccountName))
+            if (await CheckLogin(Output, AccountName))
             {
                 await Application.Current.MainPage.Navigation.PushAsync(new VereinePage(AccountName));
             }
 
         }
 
-        public async Task<bool> checkLogin(string password, string accountName)
+        public async Task<bool> CheckLogin(string password, string accountName)
         {
             var dialogService = App.Services.GetInstance<IDialogService>();
             AccountMockDataStore accountMockDataStore = new AccountMockDataStore();
@@ -106,8 +94,5 @@ namespace Turnverein.ViewModels
             await dialogService.Show("Login", "Login fehlgeschlagen. Bitte überprüfen Sie Ihre Eingaben");
             return false;
             }
-    
     }
-
-
 }

@@ -1,7 +1,4 @@
-﻿// <copyright file="SQLiteDataStore{T}.cs" company="Marco von Ballmoos">
-//   Copyright (c) 2021 Marco von Ballmoos. All rights reserved.
-// </copyright>
-
+﻿
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -57,7 +54,7 @@ namespace Wettkampf.Services
 
     private SQLiteAsyncConnection _connection;
 
-/// <summary>
+        /// <summary>
         /// Gets the static path to the database. The <see cref="Environment.SpecialFolder"/> is used to resolve the right path.
         /// </summary>
         private static string DatabasePath => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Vereine1.db3");

@@ -36,49 +36,41 @@ namespace Wettkampf.ViewModels
         set => SetProperty(ref _vereinname, value);
     }
 
-        public double ResultatLauf
-        {
+    public double ResultatLauf
+    {
         get => _resultatLauf;
         set => SetProperty(ref _resultatLauf, value);
     }
 
     public double ResultBallwerfen
-        {
-        get => _resultBallwerfen;
-        set
-        {
-            SetProperty(ref _resultBallwerfen, value);
-        }
+    { 
+        get => _resultBallwerfen; 
+        set => SetProperty(ref _resultBallwerfen, value);
     }
 
     public DateTime Geburtsdatum
-        {
+    { 
         get => _geburtsdatum;
         set => SetProperty(ref _geburtsdatum, value);
     }
 
-
-
-        public event PropertyChangedEventHandler PropertyChanged;
+    public event PropertyChangedEventHandler PropertyChanged;
 
     protected bool SetProperty<T>(
       ref T backingStore,
       T value,
       [CallerMemberName] string propertyName = "",
-      Action onChanged = null)
+      Action onChanged = null) 
     {
       if (EqualityComparer<T>.Default.Equals(backingStore, value))
       {
         return false;
-      }
-
+      } 
       backingStore = value;
       onChanged?.Invoke();
       PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-
       return true;
-    }
-
+    } 
     private bool _isBusy;
     private string _title;
     private string _vorname;

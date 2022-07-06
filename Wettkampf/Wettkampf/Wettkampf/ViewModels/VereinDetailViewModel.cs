@@ -1,5 +1,4 @@
-﻿
-using Wettkampf.Models;
+﻿using Wettkampf.Models;
 
 namespace Wettkampf.ViewModels
 {
