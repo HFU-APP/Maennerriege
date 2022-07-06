@@ -11,7 +11,6 @@
     <ToolbarItem Text="Save" Clicked="Save_Clicked" />
   </ContentPage.ToolbarItems>
     <ContentPage.Background >
-        <!-- StartPoint defaults to (0,0) -->
         <LinearGradientBrush EndPoint="0,1">
             <GradientStop Color="#2196F3" 
                           Offset="0.1" />
@@ -28,12 +27,18 @@
         <Editor Text="{Binding Verein.Name}" FontSize="Small" Margin="0" />
         <Label Text="Vereinname" FontSize="Medium" />
         <Editor Text="{Binding Verein.Vereinname}" FontSize="Small" Margin="0" />
-        <Label Text="Resultat des Laufes" FontSize="Medium" />
-        <Entry Text="{Binding Verein.ResultatLauf, Mode=OneWayToSource}" MaxLength="3" Keyboard="Numeric" Placeholder="Angabe in Minuten" FontSize="Small" Margin="0" />
-        <Label Text="Resultat des Ballwerfen" FontSize="Medium" />
-        <Entry Text="{Binding Verein.ResultBallwerfen, Mode=OneWayToSource}" MaxLength="4" Keyboard="Numeric" Placeholder="Angabe in Metern" FontSize="Small" Margin="0" />
         <Label Text="Geburtsdatum" FontSize="Medium" />
         <DatePicker x:Name="MyDatePicker" MinimumDate="01/01/1900" Date="{Binding Verein.Geburtsdatum}" FontSize="Small" Margin="0" />
+        <Label Text="Resultat 4 KM-Lauf:" FontSize="Medium" />
+        <StackLayout Orientation="Horizontal">
+            <Entry Text="{Binding Verein.ResultatLauf, Mode=OneWayToSource}" MaxLength="4" Keyboard="Numeric" Placeholder="Angabe in Minuten" FontSize="Small" Margin="0" />
+            <Label Text="Minuten" FontSize="Medium" />
         </StackLayout>
+        <Label Text="Resultat Ballwerfen:" FontSize="Medium" />
+        <StackLayout Orientation="Horizontal">
+            <Entry Text="{Binding Verein.ResultBallwerfen, Mode=OneWayToSource}" MaxLength="4" Keyboard="Numeric" Placeholder="Angabe in Metern" FontSize="Small" Margin="0" />
+            <Label Text="Meter" FontSize="Medium"/>
+        </StackLayout>
+    </StackLayout>
   </ContentPage.Content>
 </ContentPage>

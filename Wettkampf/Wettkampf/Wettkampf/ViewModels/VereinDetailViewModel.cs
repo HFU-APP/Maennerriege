@@ -9,7 +9,7 @@ namespace Wettkampf.ViewModels
         public VereinDetailViewModel(Verein verein = null)
     { 
         Verein = verein;
-        Title = verein.Id.ToString();
+        Title = verein.Vorname;
         Vorname = verein.Vorname;
         Name = verein.Name;
         Vereinname = verein.Vereinname;

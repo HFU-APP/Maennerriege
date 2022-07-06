@@ -25,10 +25,16 @@
       <Editor x:Name="Editor_Vereinname" Text="{Binding Verein.Vereinname}" FontSize="Small"/>
       <Label Text="Geburtsdatum:" FontSize="Medium" />
       <DatePicker x:Name="MyDatePicker" MinimumDate="01/01/1900" Date="{Binding Verein.Geburtsdatum}" FontSize="Small" Margin="0" />
-      <Label Text="Resultat Lauf" FontSize="Medium" />
-      <Entry x:Name="Entry_ResultLauf" MaxLength="3" Text="{Binding Verein.ResultatLauf, Mode=TwoWay}" Keyboard="Numeric" Placeholder="Angabe in Minuten" FontSize="Small" Margin="0" />
-      <Label Text="Resultat Ballwerfen" FontSize="Medium" />
-      <Entry x:Name="Entry_ResultBallwerfen" MaxLength="4" Text="{Binding Verein.ResultBallwerfen, Mode=TwoWay}" Keyboard="Numeric" Placeholder="Angabe in Metern" FontSize="Small" Margin="0" />
+      <Label Text="Resultat 4 KM-Lauf:" FontSize="Medium" />
+        <StackLayout Orientation="Horizontal">
+          <Entry x:Name="Entry_ResultLauf" MaxLength="4" Text="{Binding Verein.ResultatLauf, Mode=TwoWay}" Keyboard="Numeric" Placeholder="Angabe in Minuten" FontSize="Small" Margin="0" />
+          <Label Text="Minuten" FontSize="Medium" />
+      </StackLayout>
+      <Label Text="Resultat Ballwerfen:" FontSize="Medium"/>
+        <StackLayout Orientation="Horizontal">
+            <Entry x:Name="Entry_ResultBallwerfen" MaxLength="4" Text="{Binding Verein.ResultBallwerfen, Mode=TwoWay}" Keyboard="Numeric" Placeholder="Angabe in Metern" FontSize="Small" Margin="0" />
+            <Label Text="Meter" FontSize="Medium"/>
+        </StackLayout>
       <Button Text="Speichern" Clicked="Save_Clicked"></Button>
     </StackLayout>
 </ContentPage>
