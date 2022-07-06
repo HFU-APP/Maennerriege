@@ -1,8 +1,4 @@
-﻿// <copyright file="NeuerVereinPage.xaml.cs" company="Marco von Ballmoos">
-//   Copyright (c) 2021 Marco von Ballmoos. All rights reserved.
-// </copyright>
-
-using System;
+﻿using System;
 using Wettkampf.Models;
 using Xamarin.Forms;
 using Wettkampf.Services;

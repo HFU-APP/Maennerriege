@@ -1,11 +1,5 @@
-﻿// <copyright file="VereinDetailPage.xaml.cs" company="Marco von Ballmoos">
-//   Copyright (c) 2021 Marco von Ballmoos. All rights reserved.
-// </copyright>
-
-using System;
-using System.Diagnostics;
+﻿using System;
 using Wettkampf.Models;
-using Wettkampf.Services;
 using Wettkampf.ViewModels;
 using Xamarin.Forms;
 
@@ -33,35 +27,10 @@ namespace Wettkampf.Views
       MyDatePicker.Format = "dd MMMM yyyy";
       }
 
-    //public VereinDetailPage()
-    //{
-    //  InitializeComponent();
-
-    //  var verein = new Verein
-    //  {
-    //    Name = "Verein 1",
-    //    Vorname = "This is an Verein description."
-    //  };
-
-    //  _viewModel = new VereinDetailViewModel(verein);
-    //  BindingContext = _viewModel;
-    //}
-
-    private async void Save_Clicked(object sender, EventArgs e)
+      private async void Save_Clicked(object sender, EventArgs e)
     {
-        //var id = _viewModel.Verein.Id;
-        //Debug.WriteLine(id);
-        //Debug.WriteLine(_viewModel.Verein.ResultatLauf);
-        //string[] array = {id, _viewModel.Verein.ResultatLauf};
-
-        //Debug.WriteLine(_viewModel.Verein.Id);
-        //Debug.WriteLine(_viewModel.Verein is Verein);
-        //    //MessagingCenter.Send(this, "UpdateVerein", _viewModel.Verein);
-        //    await Navigation.PopToRootAsync();
         Console.WriteLine("test");
         Verein a = _viewModel.Verein as Verein;
-
-
         MessagingCenter.Send(a, "UpdateVerein");
     }
   }

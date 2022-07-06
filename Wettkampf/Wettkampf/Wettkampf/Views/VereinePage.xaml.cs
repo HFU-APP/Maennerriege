@@ -1,10 +1,5 @@
-﻿// <copyright file="VereinePage.xaml.cs" company="Marco von Ballmoos">
-//   Copyright (c) 2021 Marco von Ballmoos. All rights reserved.
-// </copyright>
-
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using Wettkampf.Models;
 using Wettkampf.ViewModels;
@@ -17,7 +12,6 @@ namespace Wettkampf.Views
       public Verein Verein { get; set; }
       private readonly VereineViewModel _viewModel;
       internal string accountName;
-
       public VereinePage(string accountname)
     {
       InitializeComponent();
@@ -29,10 +23,6 @@ namespace Wettkampf.Views
           BTN_Add.IsEnabled = false;
           BTN_DeleteAll.IsEnabled = false;
           BTN_Generate.IsEnabled = false;
-
-          //sw_test.Isenabled = false;
-          //SwipeView a = (SwipeView)this.FindByName("swipe1");
-          //a.IsEnabled = false;
       }
     }
 
