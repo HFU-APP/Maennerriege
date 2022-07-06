@@ -37,7 +37,7 @@ namespace Wettkampf.ViewModels
               Console.WriteLine(e);
               await dialogService.Show("Fehler beim hinzufügen", "Bitte fügen Sie die Person erneut hinzu");
           }
-          await ExecuteLoadItemsCommand();
+          //await ExecuteLoadItemsCommand();
       });
 
       MessagingCenter.Subscribe<object>(this, "DeleteItem", async (sender) =>
