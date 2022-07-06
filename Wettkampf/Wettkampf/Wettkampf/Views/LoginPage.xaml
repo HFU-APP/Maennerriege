@@ -28,9 +28,9 @@
                 <Image Source="SeekPngcom" VerticalOptions="Center" HeightRequest="150"/>
             </ContentView>
             <Label TextColor="White" Text="Username"/>
-            <Entry TextColor="White" x:Name="ent_user" Placeholder="Username" Text="{Binding AccountName}"/>
+            <Entry TextColor="White" x:Name="ent_user" Placeholder="Username" MaxLength="10" Text="{Binding AccountName}"/>
             <Label TextColor="White" Text="Passwort"/>
-            <Entry TextColor="White"  x:Name="ent_passw" Placeholder="Passwort" IsPassword="True" Text="{Binding Password}"/>
+            <Entry TextColor="White"  x:Name="ent_passw" Placeholder="Passwort" MaxLength="10" IsPassword="True" Text="{Binding Password}"/>
             <Button CornerRadius="20" VerticalOptions="Center" Text="Login" Command="{Binding LoginCommand}"/>
             <Label Text="{Binding Output}"></Label>
         </StackLayout>
