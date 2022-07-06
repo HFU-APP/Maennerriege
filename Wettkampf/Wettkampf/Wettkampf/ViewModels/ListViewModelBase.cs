@@ -15,6 +15,7 @@ namespace Wettkampf.ViewModels
   where TItem : class
   {
     public ObservableCollection<TItem> Items { get; set; }
+    public ICommand DeleteCommand => new Command<TItem>(RemovePerson);
     public Command LoadItemsCommand { get; set; }
 
     public ListViewModelBase()
