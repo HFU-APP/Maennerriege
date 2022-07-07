@@ -14,6 +14,7 @@ namespace Turnverein.ViewModels
         private string _password;
         private string _textToEncrypt = "SuperSalt1234";
         private string _output;
+        private VereinePage vp = null;
         public Command LoginCommand { get; }
         public string AccountName { get; set; }
         public string Password
@@ -68,7 +69,16 @@ namespace Turnverein.ViewModels
 
             if (await CheckLogin(Output, AccountName))
             {
-                await Application.Current.MainPage.Navigation.PushAsync(new VereinePage(AccountName));
+                if (vp != null)
+                {
+                    await Application.Current.MainPage.Navigation.PushAsync(vp);
+                }
+                else
+                {
+                    vp = new VereinePage(AccountName);
+                    await Application.Current.MainPage.Navigation.PushAsync(vp);
+                }
+                
             }
 
         }

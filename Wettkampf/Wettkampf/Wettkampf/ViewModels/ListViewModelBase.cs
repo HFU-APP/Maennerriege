@@ -21,7 +21,11 @@ namespace Wettkampf.ViewModels
     public ListViewModelBase()
     {
       Title = "Liste der Mitglieder";
-      Items = new ObservableCollection<TItem>();
+      if (Items == null)
+      {
+          Items = new ObservableCollection<TItem>();
+      }
+
       LoadItemsCommand = new Command(async () => await ExecuteLoadItemsCommand());
       var dialogService = App.Services.GetInstance<IDialogService>();
       itemFactory = App.Services.GetInstance<IItemFactory<TItem>>();
