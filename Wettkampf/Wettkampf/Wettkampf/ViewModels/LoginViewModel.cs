@@ -7,6 +7,7 @@ using Wettkampf.ViewModels;
 using Wettkampf.Views;
 using Xamarin.Forms;
 
+
 namespace Turnverein.ViewModels
 {
     public class LoginViewModel : ViewModelBase
@@ -71,6 +72,7 @@ namespace Turnverein.ViewModels
             {
                 if (vp != null)
                 {
+                    vp.Status = AccountName;
                     await Application.Current.MainPage.Navigation.PushAsync(vp);
                 }
                 else

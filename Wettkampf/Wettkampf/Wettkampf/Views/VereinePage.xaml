@@ -11,7 +11,8 @@
     <ToolbarItem x:Name="BTN_Add" Text="Add" Clicked="AddAlbumClicked" />
     <ToolbarItem x:Name="BTN_DeleteAll" Text="DeleteAll" Clicked="DeleteAllClicked" />
     <ToolbarItem x:Name="BTN_Generate" Text="Generate" Clicked="GenerateClicked" />
-  </ContentPage.ToolbarItems>
+    <ToolbarItem  Text="Close" Clicked="CloseApp_Clicked" />
+    </ContentPage.ToolbarItems>
 
     <ContentPage.Background >
         <!-- StartPoint defaults to (0,0) -->
