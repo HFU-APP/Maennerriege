@@ -4,18 +4,15 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:vm="clr-namespace:Wettkampf;assembly=Wettkampf"
     x:Class="Wettkampf.Views.VereinePage"
-    x:DataType="vm:ViewModels.VereineViewModel"
-    >
+    x:DataType="vm:ViewModels.VereineViewModel">
 
   <ContentPage.ToolbarItems>
     <ToolbarItem x:Name="BTN_Add" Text="Add" Clicked="AddAlbumClicked" />
     <ToolbarItem x:Name="BTN_DeleteAll" Text="DeleteAll" Clicked="DeleteAllClicked" />
     <ToolbarItem x:Name="BTN_Generate" Text="Generate" Clicked="GenerateClicked" />
-    <ToolbarItem  Text="Close" Clicked="CloseApp_Clicked" />
-    </ContentPage.ToolbarItems>
+  </ContentPage.ToolbarItems>
 
     <ContentPage.Background >
-        <!-- StartPoint defaults to (0,0) -->
         <LinearGradientBrush EndPoint="0,1">
             <GradientStop Color="#2196F3" 
                           Offset="0.1" />
