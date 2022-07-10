@@ -34,14 +34,17 @@ namespace Wettkampf.ViewModels
       {
           try
           {
+              Items.Add(item);
               await DataStore.AddItemAsync(item);
+              //await ExecuteLoadItemsCommand();
           }
           catch (SQLite.SQLiteException e)
           {
               Console.WriteLine(e);
               await dialogService.Show("Fehler beim hinzufügen", "Bitte fügen Sie die Person erneut hinzu");
           }
-          //await ExecuteLoadItemsCommand();
+
+
       });
 
       MessagingCenter.Subscribe<object>(this, "DeleteItem", async (sender) =>
@@ -80,10 +83,10 @@ namespace Wettkampf.ViewModels
       { 
           foreach (var element in itemFactory.CreateItems())
           {
-              //Items.Add(element);
+              Items.Add(element);
               await DataStore.AddItemAsync(element);
           }
-          await ExecuteLoadItemsCommand();
+          //await ExecuteLoadItemsCommand();
       });
 
       MessagingCenter.Subscribe<TItem>(this, "UpdateVerein", async (item) =>
