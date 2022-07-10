@@ -70,9 +70,10 @@ namespace Wettkampf.ViewModels
           }
           else
           {
-              foreach (var item in Items)
+              foreach (var item in Items.ToList())
               {
                   var currentitem = item as Verein;
+                  Items.Remove(item); //
                   await DataStore.DeleteItemAsync(currentitem.Id.ToString());
               }
               await ExecuteLoadItemsCommand();

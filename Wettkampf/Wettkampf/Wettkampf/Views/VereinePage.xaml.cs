@@ -89,7 +89,14 @@ namespace Wettkampf.Views
     }
         private void SearchBar_TextChanged(object sender, TextChangedEventArgs e)
         {
-            ItemsCollectionView.ItemsSource = GetSearchResults(e.NewTextValue);
+            if (e.NewTextValue.ToLower() != "")
+            {
+                ItemsCollectionView.ItemsSource = GetSearchResults(e.NewTextValue);
+            }
+            else
+            {
+                ItemsCollectionView.ItemsSource = _viewModel.Items;
+            }
         }
 
         private void CloseApp_Clicked(object sender, EventArgs e)
